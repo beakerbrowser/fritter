@@ -8,6 +8,7 @@ const renderHeartIcon = require('./icons/heart')
 // =
 
 module.exports = function renderPostActions (p) {
+  const currentUserUpvoted = p.votes.upVoters.includes(app.currentUser.url)
   return yo`
     <div class="post-actions">
       <div class="action">
@@ -22,8 +23,8 @@ module.exports = function renderPostActions (p) {
         : ''}
       </div>
 
-      <div class="action ${p.votes.currentUsersVote ? 'voted' : ''}">
-        <span onclick=${e => onToggleLiked(e, p)} class="vote-icon ${p.votes.currentUsersVote ? 'voted' : ''}">
+      <div class="action ${currentUserUpvoted ? 'voted' : ''}">
+        <span onclick=${e => onToggleLiked(e, p)} class="vote-icon ${currentUserUpvoted ? 'voted' : ''}">
           ${renderHeartIcon()}
         </span>
 
