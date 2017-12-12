@@ -14,10 +14,10 @@ module.exports = function renderReply (r) {
       ${renderAvatar(r.author)}
       <div class="post-content">
         <div class="post-header">
-          <span onclick=${e => app.gotoProfile(r.author, e)} class="name">${r.author.name}</span>
+          <a href=${app.profileUrl(r.author)} onclick=${e => app.gotoProfile(r.author, e)} class="name">${r.author.name}</a>
           <span class="timestamp">
             <span class="bullet">•</span>
-            <span class="value">${timestamp(r.createdAt)}</span>
+            <a href=${app.threadUrl(r)} class="value">${timestamp(r.createdAt)}</a>
           </span>
         </div>
 

@@ -33,7 +33,7 @@ module.exports = function renderThread () {
           ${renderAvatar(viewedPost)}
 
           <div>
-            <div class="name" onclick=${e => app.gotoProfile(viewedPost.author, e)}>${viewedPost.author.name}</div>
+            <a class="name" href=${app.profileUrl(viewedPost.author)} onclick=${e => app.gotoProfile(viewedPost.author, e)}>${viewedPost.author.name}</a>
             <div class="timestamp">${timestamp(viewedPost.createdAt)}</div>
           </div>
 

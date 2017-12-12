@@ -13,7 +13,7 @@ module.exports = function renderFeed () {
     <div class="feed">
       ${!app.posts.length ? yo`<div class="loading-container"><div class="spinner"></div></div>` : ''}
       <div class="new-posts-indicator"></div>
-      ${app.posts.map(renderPostFeedItem)}
+      ${app.posts.map(renderFeedItem)}
     </div>
   `
 }
@@ -21,17 +21,17 @@ module.exports = function renderFeed () {
 // internal methods
 // =
 
-function renderPostFeedItem (p) {
+function renderFeedItem (p) {
   return yo`
     <div class="feed-item post" onclick=${e => app.gotoThread(p, e)}>
       ${renderAvatar(p.author)}
       <div class="post-content">
         <div class="post-header">
           <div>
-            <span onclick=${e => app.gotoProfile(p.author, e)} class="name">${p.author.name}</span>
+            <a href=${app.profileUrl(p.author)} onclick=${e => app.gotoProfile(p.author, e)} class="name">${p.author.name}</a>
             <span class="timestamp">
               <span class="bullet">•</span>
-              <span class="value">${timestamp(p.createdAt)}</span>
+              <a href=${app.threadUrl(p)} class="value">${timestamp(p.createdAt)}</a>
             </span>
           </div>
 
