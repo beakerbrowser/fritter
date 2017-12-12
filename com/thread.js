@@ -16,51 +16,49 @@ module.exports = function renderThread () {
 
   const editingCls = app.isEditingReply ? 'editing' : ''
   return yo`
-    <div class="popup-wrapper">
-      <div class="popup-inner post-popup">
+    <div class="thread">
 
-        ${viewedPost.threadParent && !viewedPost.parents ? yo`
-          <div class="loading-container"><div class="spinner"></div></div>
-        ` : ''}
+      ${viewedPost.threadParent && !viewedPost.parents ? yo`
+        <div class="loading-container"><div class="spinner"></div></div>
+      ` : ''}
 
-        ${viewedPost.parents ? yo`
-          <div class="parents">
-            ${viewedPost.parents.map(renderReply)}
-          </div>`
-        : ''}
+      ${viewedPost.parents ? yo`
+        <div class="parents">
+          ${viewedPost.parents.map(renderReply)}
+        </div>`
+      : ''}
 
-        <div class="main-post">
-          <div class="post-header">
-            ${renderAvatar(viewedPost)}
+      <div class="main-post">
+        <div class="post-header">
+          ${renderAvatar(viewedPost)}
 
-            <div>
-              <div class="name" onclick=${e => app.gotoProfile(viewedPost.author, e)}>${viewedPost.author.name}</div>
-              <div class="timestamp">${timestamp(viewedPost.createdAt)}</div>
-            </div>
-
-            ${renderFollowButton(viewedPost.author)}
+          <div>
+            <div class="name" onclick=${e => app.gotoProfile(viewedPost.author, e)}>${viewedPost.author.name}</div>
+            <div class="timestamp">${timestamp(viewedPost.createdAt)}</div>
           </div>
 
-          <div class="text">${viewedPost.text}</div>
-
-          ${renderPostActions(viewedPost)}
+          ${renderFollowButton(viewedPost.author)}
         </div>
 
-        <form class="reply-form ${editingCls}" onsubmit=${onSubmitReply}>
-          ${renderAvatar(app.currentUserProfile)}
-          <textarea
-            placeholder="Write a reply"
-            style="border-color: ${app.getThemeColor('border')}"
-            onfocus=${onToggleIsReplying}
-            onblur=${onToggleIsReplying}
-            onkeyup=${onChangeReplyDraft}>${app.replyDraftText}</textarea>
-          <div class="actions ${editingCls}">
-            ${app.isEditingReply ? yo`<button disabled=${!app.replyDraftText} class="btn new-reply" type="submit">Reply</button>` : ''}
-          </div>
-        </form>
+        <div class="text">${viewedPost.text}</div>
 
-        ${renderReplies(viewedPost)}
+        ${renderPostActions(viewedPost)}
       </div>
+
+      <form class="reply-form ${editingCls}" onsubmit=${onSubmitReply}>
+        ${renderAvatar(app.currentUserProfile)}
+        <textarea
+          placeholder="Write a reply"
+          style="border-color: ${app.getThemeColor('border')}"
+          onfocus=${onToggleIsReplying}
+          onblur=${onToggleIsReplying}
+          onkeyup=${onChangeReplyDraft}>${app.replyDraftText}</textarea>
+        <div class="actions ${editingCls}">
+          ${app.isEditingReply ? yo`<button disabled=${!app.replyDraftText} class="btn new-reply" type="submit">Reply</button>` : ''}
+        </div>
+      </form>
+
+      ${renderReplies(viewedPost)}
     </div>
   `
 
