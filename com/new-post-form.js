@@ -30,12 +30,16 @@ module.exports = function renderNewPostForm () {
   }
 
   function onChangePostDraft (e) {
+    const oldLen = app.postDraftText.length
     app.postDraftText = e.target.value
+    if (oldLen === 0 || app.postDraftText.length === 0) {
+      rerender()
+    }
   }
 
   async function onSubmitPost (e) {
     e.preventDefault()
-    await app.libfritter.feed.post({text: this.postDraftText})
+    await app.libfritter.feed.post(app.currentUser, {text: app.postDraftText})
     app.postDraftText = ''
     await app.loadFeedPosts()
     app.render()
