@@ -11,7 +11,7 @@ module.exports = function renderPostActions (p) {
   return yo`
     <div class="post-actions">
       <div class="action">
-        <span onclick=${e => app.gotoThread(p)} class="replies-icon">
+        <span onclick=${e => app.gotoThread(p, e)} class="replies-icon">
           ${renderRepliesIcon()}
         </span>
 

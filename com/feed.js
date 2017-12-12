@@ -23,12 +23,12 @@ module.exports = function renderFeed () {
 
 function renderPostFeedItem (p) {
   return yo`
-    <div class="feed-item post" onclick=${() => app.gotoThread(p)}>
+    <div class="feed-item post" onclick=${e => app.gotoThread(p, e)}>
       ${renderAvatar(p.author)}
       <div class="post-content">
         <div class="post-header">
           <div>
-            <span onclick=${e => app.gotoProfile(p.author)} class="name">${p.author.name}</span>
+            <span onclick=${e => app.gotoProfile(p.author, e)} class="name">${p.author.name}</span>
             <span class="timestamp">
               <span class="bullet">•</span>
               <span class="value">${timestamp(p.createdAt)}</span>
@@ -36,7 +36,7 @@ function renderPostFeedItem (p) {
           </div>
 
           ${p.threadParent ? yo`
-            <div class="reply-info" onclick=${() => app.gotoThread(p.threadParent)}>
+            <div class="reply-info" onclick=${e => app.gotoThread(p.threadParent, e)}>
               Replying to
               <span class="url" >${p.threadParent.author.name}</span>
             </div>`

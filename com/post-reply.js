@@ -10,11 +10,11 @@ const {timestamp} = require('../lib/util')
 
 module.exports = function renderReply (r) {
   return yo`
-    <div class="reply feed-item post" onclick=${() => app.gotoThread(r)}>
+    <div class="reply feed-item post" onclick=${e => app.gotoThread(r, e)}>
       ${renderAvatar(r.author)}
       <div class="post-content">
         <div class="post-header">
-          <span onclick=${e => app.gotoProfile(r.author)} class="name">${r.author.name}</span>
+          <span onclick=${e => app.gotoProfile(r.author, e)} class="name">${r.author.name}</span>
           <span class="timestamp">
             <span class="bullet">•</span>
             <span class="value">${timestamp(r.createdAt)}</span>

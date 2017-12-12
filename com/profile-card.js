@@ -15,7 +15,7 @@ module.exports = function renderProfileCard (profile) {
         ${renderFollowButton(profile)}
       </div>
 
-      <span onclick=${e => app.gotoProfile(profile)} class="name">${profile.name || 'Anonymous'}</span>
+      <span onclick=${e => app.gotoProfile(profile, e)} class="name">${profile.name || 'Anonymous'}</span>
 
       <p class="bio">${profile.bio}</p>
     </div>

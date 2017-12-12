@@ -25,13 +25,14 @@ exports.render = function render () {
 function renderView () {
   switch (app.currentView) {
     case 'following':
-      return renderFollowing()
     case 'friends':
       return renderFriends()
     case 'thread':
       // TODO
     case 'user':
-      // TODO
+      if (app.currentSubview === 'following') {
+        return renderFollowing()
+      }
     case 'feed':
     default:
       return renderFeed()

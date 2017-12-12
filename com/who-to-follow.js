@@ -22,7 +22,7 @@ module.exports = function renderWhoToFollow () {
 
 function renderProfileLite (profile) {
   return yo`
-    <div onclick=${e => app.gotoProfile(profile)} class="profile-lite">
+    <div onclick=${e => app.gotoProfile(profile, e)} class="profile-lite">
       ${renderAvatar(profile)}
       <span class="content">
         <div class="name">${profile.name}</div>
