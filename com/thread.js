@@ -64,7 +64,7 @@ module.exports = function renderThread () {
 
   async function onSubmitReply (e) {
     e.preventDefault()
-    await app.libfritter.feed.post({
+    await app.libfritter.feed.post(app.currentUser, {
       text: app.replyDraftText,
       threadRoot: app.viewedPost.threadRoot || app.viewedPost.getRecordURL(),
       threadParent: app.viewedPost.getRecordURL()
@@ -85,7 +85,11 @@ module.exports = function renderThread () {
   }
 
   function onChangeReplyDraft (e) {
+    const oldLen = app.replyDraftText.length
     app.replyDraftText = e.target.value
+    if (oldLen === 0 || app.replyDraftText.length === 0) {
+      app.render()
+    }
   }
 }
 

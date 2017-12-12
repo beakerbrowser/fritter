@@ -73,8 +73,6 @@
   }
 
   .actions {
-    flex-basis: 100%;
-    justify-content: flex-end;
     display: none;
 
     // reset default .popup-inner .actions styles
@@ -82,7 +80,8 @@
     border-top: 0;
 
     &.editing {
-      display: flex;
+      display: block;
+      padding-left: 10px;
     }
   }
 }
