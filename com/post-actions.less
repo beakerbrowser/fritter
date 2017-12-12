@@ -1,0 +1,52 @@
+.post-actions {
+
+  .action {
+    display: inline-block;
+    width: 55px;
+
+    &.voted {
+
+      .count {
+        color: crimson;
+      }
+    }
+  }
+
+  .count {
+    color: gray;
+    font-size: 11.5px;
+    font-weight: 500;
+    line-height: 1.3;
+    vertical-align: top;
+    margin-left: 5px;
+  }
+
+  .icon * {
+    stroke: #999;
+    stroke-width: 8px;
+  }
+
+  .icon:hover * {
+    stroke: #777;
+  }
+
+  .vote-icon {
+    &.voted {
+
+      .heart * {
+        fill: crimson;
+        stroke: crimson;
+      }
+
+      &:hover {
+        stroke: crimson;
+      }
+    }
+  }
+
+  .icon {
+    cursor: pointer;
+    width: 14.5px;
+    height: 14.5px;
+  }
+}

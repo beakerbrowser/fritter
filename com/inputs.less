@@ -1,0 +1,104 @@
+textarea {
+  line-height: 1.4;
+}
+
+input, textarea {
+  height: 30px;
+  padding: 0 7px;
+  border-radius: 4px;
+  color: #333;
+  border: 1px solid #ccc;
+
+  &[type="checkbox"],
+  &[type="radio"],
+  &[type="range"] {
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &[type="file"] {
+    padding: 0;
+    border: 0;
+    line-height: 1;
+
+    &:focus {
+      border: 0;
+      box-shadow: none;
+    }
+  }
+
+  &.roomy {
+    padding: 7px 9px;
+  }
+}
+
+input,
+textarea,
+select {
+
+  &:focus {
+    outline: 0;
+    border: 1px solid fadeout(#2864dc, 20%);
+    box-shadow: 0 0 0 2px fadeout(#2864dc, 80%);
+  }
+}
+
+textarea {
+  width: ~"calc(100% - 55px)";
+  padding-top: 9px;
+  line-height: 1.3;
+  resize: none;
+  cursor: text;
+  transition: height .15s ease;
+
+  &:focus {
+    box-shadow: 0 0 0 2px var(--theme-color-box-shadow)
+  }
+}
+
+// inline text input
+input.inline {
+  height: auto;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  cursor: text;
+  padding: 3px 5px;
+  line-height: 1;
+
+  &:focus,
+  &:hover {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+
+  &:focus {
+    background: #fff;
+  }
+}
+
+// custom file picker
+.input-file-picker {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  color: gray;
+
+  span {
+    flex: 1;
+    padding-left: 3px;
+  }
+}
+
+::-webkit-input-placeholder {
+  color: rgba(0,0,0,.6);
+  font-size: .75rem;
+}
+
+label {
+  font-weight: 500;
+}

@@ -1,0 +1,38 @@
+.btn {
+  border: 1px solid var(--theme-color);
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 40px !important;
+  color: var(--theme-color);
+
+  &:hover {
+    background: none;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px var(--theme-color-box-shadow);
+  }
+
+  &.follow-btn {
+    background: transparent;
+  }
+
+  &.follow-btn.following,
+  &.new-reply,
+  &.new-post {
+    background: var(--theme-color);
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 600 !important;
+
+    &:hover {
+      // TODO
+    }
+
+    &:disabled {
+      background: var(--theme-color-box-shadow) !important;
+      color: fadeout(#fff, 10%) !important;
+      border: none !important;
+    }
+  }
+}

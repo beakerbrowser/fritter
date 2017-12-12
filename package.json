@@ -1,0 +1,35 @@
+{
+  "name": "fritter",
+  "version": "1.0.0",
+  "description": "An example app for Beaker (simple twitter clone)",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "lessc index.less assets/index.css",
+    "build:js": "browserify index.js > assets/index.js",
+    "build": "npm run build:js && npm run build:css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beakerbrowser/fritter.git"
+  },
+  "keywords": [
+    "beaker",
+    "dat"
+  ],
+  "author": "Paul Frazee <pfrazee@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beakerbrowser/fritter/issues"
+  },
+  "homepage": "https://github.com/beakerbrowser/fritter#readme",
+  "dependencies": {
+    "moment": "^2.19.3",
+    "nanorouter": "^2.1.0",
+    "yo-yo": "^1.4.1"
+  },
+  "devDependencies": {
+    "browserify": "^14.5.0",
+    "less": "^2.7.3"
+  }
+}
