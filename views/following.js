@@ -4,6 +4,7 @@ const yo = require('yo-yo')
 const renderProfileCard = require('../com/profile-card')
 const renderProfileHeader = require('../com/profile-header')
 const renderWhoToFollow = require('../com/who-to-follow')
+const renderBackToFeed = require('../com/back-to-feed')
 const renderProfileListingItem = require('../com/profile-listing-item')
 
 // exported api
@@ -13,6 +14,7 @@ module.exports = function renderFollowing () {
   return yo`
     <div class="view following">
       <div class="sidebar-col">
+        ${renderBackToFeed()}
         ${renderProfileCard(app.viewedProfile)}
         ${renderWhoToFollow()}
       </div>
