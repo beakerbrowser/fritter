@@ -7,10 +7,10 @@ const yo = require('yo-yo')
 
 module.exports = function renderFollowButton (profile) {
   if (profile.isCurrentUser) return ''
-  var cls = profile.isCurrentUserFollowing ? 'following' : ''
+  var cls = app.isCurrentUserFollowing(profile) ? 'following' : ''
   return yo`
     <button class="follow-btn btn ${cls}" onclick=${onToggleFollowing}>
-      ${profile.isCurrentUserFollowing ? 'Following' : 'Follow'}
+      ${app.isCurrentUserFollowing(profile) ? 'Following' : 'Follow'}
     </button>`
 
   async function onToggleFollowing (e) {
