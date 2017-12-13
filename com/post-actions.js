@@ -18,7 +18,7 @@ module.exports = function renderPostActions (p) {
 
         ${p.replies ? yo`
           <span class="count">
-            ${p.replies.length}
+            ${typeof p.replies === 'number' ? p.replies : p.replies.length}
           </span>`
         : ''}
       </div>

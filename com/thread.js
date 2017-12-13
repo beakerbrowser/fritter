@@ -17,14 +17,9 @@ module.exports = function renderThread () {
   const editingCls = app.isEditingReply ? 'editing' : ''
   return yo`
     <div class="thread">
-
-      ${viewedPost.threadParent && !viewedPost.parents ? yo`
-        <div class="loading-container"><div class="spinner"></div></div>
-      ` : ''}
-
-      ${viewedPost.parents ? yo`
+      ${viewedPost.parent ? yo`
         <div class="parents">
-          ${viewedPost.parents.map(renderReply)}
+          ${recursiveParentRender(viewedPost)}
         </div>`
       : ''}
 
@@ -96,11 +91,30 @@ module.exports = function renderThread () {
 // internal methods
 // =
 
+function recursiveParentRender (p) {
+  var parents = []
+  while (p.parent) {
+    parents.unshift(renderReply(p.parent))
+    p = p.parent
+  }
+  return parents
+}
+
 function renderReplies (p) {
   if (!(p.replies && p.replies.length)) return ''
+  var replies = []
+  function iterReplies (rs) {
+    rs.forEach(r => {
+      replies.push(renderReply(r))
+      if (r.replies) {
+        iterReplies(r.replies)
+      }
+    })
+  }
+  iterReplies(p.replies)
   return yo`
     <div class="replies-container">
-      <div class="replies">${p.replies.map(renderReply)}</div>
+      <div class="replies">${replies}</div>
     </div>
   `
 }
