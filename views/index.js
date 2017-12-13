@@ -5,6 +5,7 @@ const renderFeed = require('./feed')
 const renderFriends = require('./friends')
 const renderFollowing = require('./following')
 const renderThread = require('./thread')
+const renderNewUser = require('./new-user')
 
 exports.render = function render () {
   yo.update(document.querySelector('body'), yo`
@@ -36,6 +37,8 @@ function renderView () {
       }
     case 'feed':
     default:
+      if (!app.currentUser)
+        return renderNewUser()
       return renderFeed()
   }
 }

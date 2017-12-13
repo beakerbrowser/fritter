@@ -33,6 +33,8 @@ exports.render = function render () {
       <div class="popup-inner">
         <div class="head">
           <div class="title">Crop your photo</div>
+        </div>
+        <div class="body">
           <div class="controls">
             <canvas
               id="crop-popup-canvas"
@@ -46,7 +48,7 @@ exports.render = function render () {
             <input type="range" value="0" min="0" max="100" onchange=${onResize} oninput=${onResize} />
           </div>
           <div class="btns">
-            <button class="btn" onclick=${destroy}>Cancel</button>
+            <button class="btn" onclick=${exports.destroy}>Cancel</button>
             <button class="btn primary" onclick=${onDone}>Done</button>
           </div>
         </div>
@@ -64,7 +66,7 @@ exports.create = function create (imgUrl, _cb) {
   oy = 0
 
   // render interface
-  var popup = render()
+  var popup = exports.render()
   document.body.appendChild(popup)
   document.addEventListener('keyup', onKeyUp)
 
@@ -163,7 +165,7 @@ function onDone () {
     imgData: dataUrl.split(',')[1],
     imgExtension: 'png'
   })
-  destroy()
+  exports.destroy()
 }
 
 function onKeyUp (e) {
@@ -171,6 +173,6 @@ function onKeyUp (e) {
   e.stopPropagation()
 
   if (e.keyCode === 27) {
-    destroy()
+    exports.destroy()
   }
 }

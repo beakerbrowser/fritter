@@ -1,0 +1,93 @@
+form.edit-profile {
+  max-width: 365px;
+
+  input,
+  textarea,
+  label {
+    display: block;
+  }
+  label {
+    margin-bottom: 0.5rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  textarea {
+    height: 70px;
+    padding-top: 3px;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 5px 15px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      margin-left: 5px;
+    }
+  }
+
+  .avatar-container {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-left: 4px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 50%;
+
+    &:hover {
+
+      .avatar.empty {
+        // background: rgba(0,0,0,.125);
+      }
+    }
+  }
+
+  .avatar-input {
+    cursor: pointer;
+    width: 200%;
+    height: 100%;
+    padding-left: 50px; // push the "Choose files" button out of view
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    background: fadeout(#fff, 70%);
+    transition: opacity .1s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .avatar {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    transition: background .1s ease;
+
+    &.empty {
+      background: rgba(0,0,0,.2);
+      color: #fff;
+      font-size: 36px;
+      text-align: center;
+      line-height: 35px;
+      padding: 0;
+      cursor: pointer;
+    }
+  }
+
+  img.avatar.empty {
+    opacity: 0;
+  }
+}

@@ -7,27 +7,34 @@ const cropPopup = require('./crop-popup')
 // =
 
 module.exports = function renderProfileEditor () {
+  const isNew = !app.currentUserProfile
+  var avatar = app.currentUserProfile && app.currentUserProfile.avatar || ''
+  var avatarUrl = avatar ? (app.currentUserProfile.getRecordOrigin() + avatar) : ''
+  var name = app.currentUserProfile && app.currentUserProfile.name || ''
+  var bio = app.currentUserProfile && app.currentUserProfile.bio || ''
+
   return yo`
     <div>
-      <h2>Edit your profile</h2>
+      <h2>${isNew ? 'Create' : 'Edit'} your profile</h2>
 
       <form class="edit-profile" onsubmit=${onSaveProfile}>
 
         <label for="avatar">Avatar</label>
         <div title="Update your avatar" class="avatar-container">
           <input onchange=${onUpdateTmpAvatar} name="avatar" class="avatar-input" type="file" accept="image/*"/>
-          <img class="avatar editor" src="${app.viewedProfile.avatar ? app.viewedProfile.getRecordOrigin() + app.viewedProfile.avatar : ''}?cache-buster=${Date.now()}"/>
-          ${app.viewedProfile.avatar ? '' : yo`<span class="avatar editor empty">+</span>`}
+          ${avatar
+            ? yo`<img class="avatar editor" src="${avatarUrl}?cache-buster=${Date.now()}"/>`
+            : yo`<span class="avatar editor empty">+</span>`}
         </div>
 
         <label for="name">Name</label>
-        <input autofocus type="text" name="name" placeholder="Name" value=${app.viewedProfile.name || ''}/>
+        <input autofocus type="text" name="name" placeholder="Name" value=${name}/>
 
         <label for="bio">Bio (optional)</label>
-        <textarea name="bio" placeholder="Enter a short bio">${app.viewedProfile.bio || ''}</textarea>
+        <textarea name="bio" placeholder="Enter a short bio">${bio}</textarea>
 
         <div class="actions">
-          <button type="button" class="btn" onclick=${app.onToggleEditingProfile}>Cancel</button>
+          ${isNew ? '' : yo`<button type="button" class="btn" onclick=${app.gotoFeed}>Cancel</button>`}
           <button type="submit" class="btn">Save</button>
         </div>
       </form>
@@ -41,8 +48,7 @@ module.exports = function renderProfileEditor () {
       name: e.target.name.value || '',
       bio: e.target.bio.value || ''
     })
-
-    window.history.pushState({}, null, '/')
+    app.gotoFeed()
   }
 
   function onUpdateTmpAvatar (e) {
@@ -53,7 +59,13 @@ module.exports = function renderProfileEditor () {
       reader.onload = () => {
         e.target.value = null // clear the input
         cropPopup.create(reader.result, res => {
-          document.querySelector('img.editor.avatar').src = res.dataUrl
+          var avatarEl = document.querySelector('img.editor.avatar')
+          if (avatarEl) {
+            avatarEl.src = res.dataUrl
+          } else {
+            var placeholderEl = document.querySelector('span.editor.avatar')
+            placeholderEl.parentNode.replaceChild(yo`<img class="avatar editor" src=${res.dataUrl}/>`, placeholderEl)
+          }
           app.tmpAvatar = res
         })
       }

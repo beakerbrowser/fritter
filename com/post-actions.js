@@ -8,7 +8,7 @@ const renderHeartIcon = require('./icons/heart')
 // =
 
 module.exports = function renderPostActions (p) {
-  const currentUserUpvoted = p.votes.upVoters.includes(app.currentUser.url)
+  const currentUserUpvoted = app.currentUser && p.votes.upVoters.includes(app.currentUser.url)
   return yo`
     <div class="post-actions">
       <div class="action">

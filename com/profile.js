@@ -15,7 +15,7 @@ module.exports = function renderProfile () {
     `
   }
 
-  var isUserProfile = app.viewedProfile && app.viewedProfile.getRecordOrigin() === app.currentUserProfile.getRecordOrigin()
+  var isUserProfile = app.viewedProfile && app.currentUser && app.viewedProfile.getRecordOrigin() === app.currentUserProfile.getRecordOrigin()
   return yo`
     <div class="profile-view">
       <div class="header">

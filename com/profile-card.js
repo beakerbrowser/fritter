@@ -8,6 +8,7 @@ const renderFollowButton = require('./follow-btn')
 // =
 
 module.exports = function renderProfileCard (profile) {
+  if (!profile) return ''
   return yo`
     <div class="profile-card">
       <div class="profile-card-header">
@@ -18,7 +19,7 @@ module.exports = function renderProfileCard (profile) {
 
       <p class="bio">${profile.bio}</p>
 
-      ${app.currentUser.url === profile.getRecordOrigin() ? '' : renderFollowButton(profile)}
+      ${!app.currentUser || app.currentUser.url === profile.getRecordOrigin() ? '' : renderFollowButton(profile)}
     </div>
   `
 }
