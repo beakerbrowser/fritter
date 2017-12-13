@@ -9,7 +9,7 @@ module.exports = function imgWithFallbacks (baseSrc, exts, {cls} = {}) {
 
 function render (baseSrc, exts, cls) {
   const nextExt = exts.shift()
-  const url = `${baseSrc}.${nextExt}`
+  const url = `${baseSrc}.${nextExt}?cache=${Date.now()}`
   return yo`
     <img class=${cls} src=${url} onerror=${(e) => onerror(e, baseSrc, exts, cls)} />
   `

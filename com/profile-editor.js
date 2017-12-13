@@ -9,7 +9,7 @@ const cropPopup = require('./crop-popup')
 module.exports = function renderProfileEditor () {
   const isNew = !app.currentUserProfile
   var avatar = app.currentUserProfile && app.currentUserProfile.avatar || ''
-  var avatarUrl = avatar ? (app.currentUserProfile.getRecordOrigin() + avatar) : ''
+  var avatarUrl = avatar ? (app.currentUserProfile.getRecordOrigin() + '/' + avatar) : ''
   var name = app.currentUserProfile && app.currentUserProfile.name || ''
   var bio = app.currentUserProfile && app.currentUserProfile.bio || ''
 

@@ -6,6 +6,7 @@ const renderFriends = require('./friends')
 const renderFollowing = require('./following')
 const renderThread = require('./thread')
 const renderNewUser = require('./new-user')
+const renderEditProfile = require('./edit-profile')
 
 exports.render = function render () {
   yo.update(document.querySelector('body'), yo`
@@ -31,6 +32,8 @@ function renderView () {
       return renderFriends()
     case 'thread':
       return renderThread()
+    case 'edit':
+      return renderEditProfile()
     case 'user':
       if (app.currentSubview === 'following') {
         return renderFollowing()

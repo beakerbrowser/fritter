@@ -19,7 +19,11 @@ module.exports = function renderProfileCard (profile) {
 
       <p class="bio">${profile.bio}</p>
 
-      ${!app.currentUser || app.currentUser.url === profile.getRecordOrigin() ? '' : renderFollowButton(profile)}
+      ${!app.currentUser
+        ? ''
+        : app.currentUser.url === profile.getRecordOrigin()
+          ? yo`<a href="/edit" onclick=${app.gotoEditProfile} class="btn">Edit profile</a>`
+          : renderFollowButton(profile)}
     </div>
   `
 }
