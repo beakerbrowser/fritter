@@ -11,7 +11,7 @@ const {timestamp} = require('../lib/util')
 module.exports = function renderFeed () {
   return yo`
     <div class="feed">
-      ${!app.posts.length ? yo`<div class="loading-container"><div class="spinner"></div></div>` : ''}
+      ${!app.posts.length ? yo`<div class="empty">No posts yet! Maybe you should change that?</div>` : ''}
       <div class="new-posts-indicator"></div>
       ${app.posts.map(renderFeedItem)}
     </div>
