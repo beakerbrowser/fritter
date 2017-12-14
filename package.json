@@ -6,7 +6,9 @@
   "scripts": {
     "build:css": "lessc index.less assets/index.css",
     "build:js": "browserify index.js > assets/index.js",
+    "build:js-prod": "browserify index.js | uglifyjs -c > assets/index.js",
     "build": "npm run build:js && npm run build:css",
+    "build-prod": "npm run build:js-prod && npm run build:css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,12 +26,13 @@
   },
   "homepage": "https://github.com/beakerbrowser/fritter#readme",
   "dependencies": {
-    "moment": "^2.19.3",
+    "@beaker/libfritter": "^1.0.1",
     "nanorouter": "^2.1.0",
     "yo-yo": "^1.4.1"
   },
   "devDependencies": {
     "browserify": "^14.5.0",
-    "less": "^2.7.3"
+    "less": "^2.7.3",
+    "uglify-es": "^3.2.2"
   }
 }
