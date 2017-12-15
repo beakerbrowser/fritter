@@ -17,7 +17,7 @@ module.exports = function () {
       </div>
 
       <div class="main-col">
-        <div class="edit-profile">
+        <div class="edit-profile-view">
           ${renderProfileEditor()}
         </div>
       </div>
