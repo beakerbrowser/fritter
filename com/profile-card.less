@@ -1,6 +1,15 @@
 .profile-card {
   -webkit-font-smoothing: antialiased;
 
+  .profile-card-header {
+    display: flex;
+    margin-bottom: 1rem;
+
+    p {
+      margin: 1.4rem 0 0 0.7rem;
+    }
+  }
+
   .avatar {
     width: 60px;
     height: 60px;
@@ -15,9 +24,21 @@
     line-height: 1.4;
     font-size: .8rem;
     color: #555;
+    padding: 0.5rem 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
   }
 
   .btn {
     font-size: 0.8rem;
+  }
+
+  .profile-link {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+
+    svg {
+      fill: var(--theme-color);
+    }
   }
 }

@@ -10,6 +10,7 @@ const renderProfileListingItem = require('../com/profile-listing-item')
 // =
 
 module.exports = function renderFollowing () {
+  const isEmpty = app.viewedProfile.follows.length === 0
   return yo`
     <div class="view following">
       <div class="sidebar-col">
@@ -19,8 +20,8 @@ module.exports = function renderFollowing () {
 
       <div class="main-col">
         ${renderProfileHeader(app.viewedProfile)}
-        <div class="view-content">
-          ${app.viewedProfile.follows.length === 0
+        <div class="view-content ${isEmpty ? 'empty' : ''}">
+          ${isEmpty
             ? `${app.viewedProfile.name} is not following anyone`
             : yo`<div class="following-list">${app.viewedProfile.follows.map(renderProfileListingItem)}</div>`
           }

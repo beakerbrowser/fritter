@@ -66,7 +66,7 @@ module.exports = function renderThread () {
     })
     app.replyDraftText = ''
     app.isEditingReply = false
-    
+
     // reload the post
     app.viewedPost = await app.libfritter.feed.getThread(app.viewedPost.getRecordURL())
     app.render()

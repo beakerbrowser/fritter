@@ -7,6 +7,8 @@ const renderFollowing = require('./following')
 const renderThread = require('./thread')
 const renderNewUser = require('./new-user')
 const renderEditProfile = require('./edit-profile')
+const renderLoading = require('./loading')
+const renderError = require('./error')
 
 exports.render = function render () {
   yo.update(document.querySelector('body'), yo`
@@ -26,11 +28,17 @@ exports.render = function render () {
 // =
 
 function renderView () {
+  if (app.viewError) {
+    return renderError()
+  }
   switch (app.currentView) {
     case 'following':
     case 'friends':
       return renderFriends()
     case 'thread':
+      if (!app.viewedPost) {
+        return renderLoading()
+      }
       return renderThread()
     case 'edit':
       return renderEditProfile()
@@ -38,10 +46,17 @@ function renderView () {
       if (app.currentSubview === 'following') {
         return renderFollowing()
       }
+      if (!app.viewedProfile) {
+        return renderLoading()
+      }
     case 'feed':
     default:
-      if (!app.currentUser)
+      if (!app.currentUser) {
         return renderNewUser()
+      }
+      if (!app.posts) {
+        return renderLoading()
+      }
       return renderFeed()
   }
 }
