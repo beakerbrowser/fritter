@@ -41,7 +41,7 @@ module.exports = function renderNewPostForm () {
     e.preventDefault()
     await app.libfritter.feed.post(app.currentUser, {text: app.postDraftText})
     app.postDraftText = ''
-    await app.loadFeedPosts()
+    app.posts = await app.loadFeedPosts()
     app.render()
   }
 
