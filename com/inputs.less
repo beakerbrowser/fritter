@@ -41,8 +41,8 @@ select {
 
   &:focus {
     outline: 0;
-    border: 1px solid fadeout(#2864dc, 20%);
-    box-shadow: 0 0 0 2px fadeout(#2864dc, 80%);
+    border: 1px solid var(--theme-color);
+    box-shadow: 0 0 0 2px var(--theme-color-box-shadow)
   }
 }
 
@@ -53,10 +53,6 @@ textarea {
   resize: none;
   cursor: text;
   transition: height .15s ease;
-
-  &:focus {
-    box-shadow: 0 0 0 2px var(--theme-color-box-shadow)
-  }
 }
 
 // inline text input
