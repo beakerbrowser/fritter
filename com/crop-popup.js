@@ -49,7 +49,7 @@ exports.render = function render () {
           </div>
           <div class="btns">
             <button class="btn" onclick=${exports.destroy}>Cancel</button>
-            <button class="btn primary" onclick=${onDone}>Done</button>
+            <button class="btn primary" onclick=${onDone}>Save</button>
           </div>
         </div>
       </div>
