@@ -35,7 +35,7 @@ module.exports = function renderProfileEditor () {
 
         <div class="actions">
           ${isNew ? '' : yo`<button type="button" class="btn" onclick=${app.gotoFeed}>Cancel</button>`}
-          <button type="submit" class="btn">Save</button>
+          <button type="submit" class="btn primary">${isNew ? 'Create profile' : 'Save'}</button>
         </div>
       </form>
     </div>
