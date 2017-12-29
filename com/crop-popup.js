@@ -32,7 +32,7 @@ exports.render = function render () {
     <div id="crop-popup" class="popup-wrapper">
       <div class="popup-inner">
         <div class="head">
-          <div class="title">Crop your photo</div>
+          <div class="title">Position and resize your photo</div>
         </div>
         <div class="body">
           <div class="controls">
