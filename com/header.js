@@ -8,6 +8,8 @@ const renderAvatar = require('../com/avatar')
 // exported api
 
 module.exports = function renderHeader () {
+  if (!app.currentUserProfile) return ''
+
   return yo`
     <header>
       <nav>
