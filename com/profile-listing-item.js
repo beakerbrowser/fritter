@@ -10,16 +10,11 @@ const renderFollowButton = require('./follow-btn')
 module.exports = function renderProfileListingItem (profile) {
   return yo`
     <div class="feed-item profile" onclick=${e => app.gotoProfile(profile, e)}>
-      <div class="profile-feed-item-header">
-        ${renderAvatar(profile)}
+        ${renderAvatar(profile, 'small')}
 
-        <div>
-          <div class="name" onclick=${e => app.gotoProfile(profile, e)}>${profile.name || 'Anonymous'}</div>
-          ${renderFollowButton(profile)}
-        </div>
-      </div>
+        <div class="name" onclick=${e => app.gotoProfile(profile, e)}>${profile.name || 'Anonymous'}</div>
 
-      <p class="bio">${profile.bio}</p>
+        ${renderFollowButton(profile)}
     </div>
   `
 }
