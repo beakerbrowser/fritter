@@ -12,7 +12,8 @@ module.exports = function renderNewPostForm () {
   return yo`
     <form class="new-post-form ${editingCls}" onsubmit=${onSubmitPost}>
       <div class="inputs">
-        ${renderAvatar(app.currentUserProfile)}
+        ${renderAvatar(app.currentUserProfile, 'small')}
+
         <textarea
           placeholder="Write a post"
           style="border-color: ${app.getThemeColor('border')}; height: ${isEditingPost ? '60px' : '35px'};"
