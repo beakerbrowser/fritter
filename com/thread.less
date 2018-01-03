@@ -1,12 +1,12 @@
 .thread {
+
   .main-post {
-    padding: 25px 25px 15px 25px;
+    padding: 15px;
     background: #fff;
 
     .post-header {
       display: flex;
       flex-wrap: nowrap;
-      margin-bottom: 15px;
     }
 
     .follow-btn {
@@ -23,13 +23,24 @@
       margin-bottom: 5px;
     }
 
+    .timestamp a {
+      color: inherit;
+      -webkit-font-smoothing: antialiased;
+
+      &:hover {
+        color: var(--theme-color);
+      }
+    }
+
     .text {
       font-size: 1.7rem;
       margin-bottom: 5px;
+      margin-left: 60px;
     }
 
     .post-actions {
       margin-top: 15px;
+      margin-left: 60px;
     }
   }
 

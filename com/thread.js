@@ -27,10 +27,13 @@ module.exports = function renderThread () {
         <div class="post-header">
           ${renderAvatar(viewedPost)}
 
-          <div>
-            <a class="name" href=${app.profileUrl(viewedPost.author)} onclick=${e => app.gotoProfile(viewedPost.author, e)}>${viewedPost.author.name}</a>
-            <div class="timestamp">${timestamp(viewedPost.createdAt)}</div>
-          </div>
+            <div>
+              <a class="name" href=${app.profileUrl(viewedPost.author)} onclick=${e => app.gotoProfile(viewedPost.author, e)}>${viewedPost.author.name}</a>
+
+              <div class="timestamp">
+                <a href=${app.threadUrl(viewedPost)} class="value">${timestamp(viewedPost.createdAt)}</a>
+              </div>
+            </div>
 
           ${renderFollowButton(viewedPost.author)}
         </div>
