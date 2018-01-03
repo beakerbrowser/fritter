@@ -2,10 +2,11 @@ header {
   position: fixed;
   z-index: 3;
   width: 100%;
-  height: 50px;
+  height: 47px;
   background: #fff;
 
   nav {
+    display: flex;
     margin: auto;
     max-width: 900px;
     height: 100%;
@@ -15,17 +16,32 @@ header {
     display: inline-flex;
     align-items: center;
     height: 100%;
-    padding: 0 15px;
-    border-bottom: 3px solid transparent;
+    padding: 0 20px;
+    border-bottom: 2.5px solid transparent;
+    color: var(--muted-text);
 
     .label {
-      font-weight: 600;
+      font-weight: 500;
       font-size: 13px;
+      letter-spacing: .2px;
     }
 
     .icon {
       height: 18px;
-      margin-right: 5px;
+      margin-right: 7px;
+
+      * {
+        fill: var(--muted-text);
+      }
+
+      &.settings {
+        height: 20px;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
 
       svg {
         width: 18px;
@@ -33,12 +49,25 @@ header {
       }
     }
 
-    &.active {
-      border-color: var(--theme-color);
+    &.profile,
+    &.new-post {
+      border-bottom: 0;
+      padding-right: 0;
+    }
 
-      .label {
-        text-decoration: none;
+    &.profile {
+      margin-left: auto;
+
+      .name {
+        margin-right: 7px;
       }
+    }
+
+    &:hover,
+    &.active {
+      color: var(--theme-color);
+      border-color: var(--theme-color);
+      text-decoration: none;
 
       .icon * {
         fill: var(--theme-color);
