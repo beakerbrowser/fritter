@@ -26,18 +26,15 @@
     cursor: not-allowed;
   }
 
-  &.follow-btn {
-    background: transparent;
-  }
-
   &.primary,
   &.follow-btn.following,
   &.new-reply,
+  &.unfollow,
   &.new-post {
     background: var(--theme-color);
     color: #fff;
     -webkit-font-smoothing: antialiased;
-    font-weight: 600;
+    font-weight: 700;
 
     &:hover {
       // TODO
@@ -47,6 +44,16 @@
       background: var(--theme-color-box-shadow) !important;
       color: fadeout(#fff, 10%) !important;
       border: none !important;
+    }
+  }
+
+  &.follow-btn {
+    background: transparent;
+    width: 95px; // fix the width so on hover the text change doesn't change the width
+
+    &.unfollow {
+      background: #c40e0e;
+      border-color: #c40e0e;
     }
   }
 }
