@@ -2,6 +2,7 @@
 
 const yo = require('yo-yo')
 const renderProfileCard = require('../com/profile-card')
+const renderFooter = require('../com/footer')
 const renderProfileEditor = require('../com/profile-editor')
 const renderBackToFeed = require('../com/back-to-feed')
 
@@ -14,6 +15,7 @@ module.exports = function () {
       <div class="sidebar-col">
         ${renderBackToFeed()}
         ${renderProfileCard(app.currentUserProfile)}
+        ${renderFooter()}
       </div>
 
       <div class="main-col">

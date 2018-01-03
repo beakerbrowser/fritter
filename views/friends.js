@@ -2,6 +2,7 @@
 
 const yo = require('yo-yo')
 const renderProfileCard = require('../com/profile-card')
+const renderFooter = require('../com/footer')
 const renderBackToFeed = require('../com/back-to-feed')
 const renderProfileListingItem = require('../com/profile-listing-item')
 
@@ -14,6 +15,7 @@ module.exports = function renderFriends () {
       <div class="sidebar-col">
         ${renderBackToFeed()}
         ${renderProfileCard(app.viewedProfile)}
+        ${renderFooter()}
       </div>
 
       <div class="main-col">

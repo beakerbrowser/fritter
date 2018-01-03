@@ -2,6 +2,7 @@
 
 const yo = require('yo-yo')
 const renderProfileCard = require('../com/profile-card')
+const renderFooter = require('../com/footer')
 const renderProfileHeader = require('../com/profile-header')
 const renderBackToFeed = require('../com/back-to-feed')
 const renderProfileListingItem = require('../com/profile-listing-item')
@@ -16,6 +17,7 @@ module.exports = function renderFollowing () {
       <div class="sidebar-col">
         ${renderBackToFeed()}
         ${renderProfileCard(app.viewedProfile)}
+        ${renderFooter()}
       </div>
 
       <div class="main-col">

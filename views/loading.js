@@ -2,6 +2,7 @@
 
 const yo = require('yo-yo')
 const renderProfileCard = require('../com/profile-card')
+const renderFooter = require('../com/footer')
 const renderBackToFeed = require('../com/back-to-feed')
 const renderSpinnerIcon = require('../com/icons/spinner')
 
@@ -14,6 +15,7 @@ module.exports = function () {
       <div class="sidebar-col">
         ${renderBackToFeed()}
         ${renderProfileCard(app.viewedProfile || app.currentUserProfile)}
+        ${renderFooter()}
       </div>
 
       <div class="main-col">
