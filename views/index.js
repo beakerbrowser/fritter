@@ -1,6 +1,7 @@
 /* globals app document */
 
 const yo = require('yo-yo')
+const renderHeader = require('../com/header')
 const renderFeed = require('./feed')
 const renderFriends = require('./friends')
 const renderFollowing = require('./following')
@@ -13,9 +14,12 @@ const renderError = require('./error')
 exports.render = function render () {
   yo.update(document.querySelector('body'), yo`
     <body>
+      ${renderHeader()}
+
       <main>
         ${renderView()}
       </main>
+
       <style>body{--theme-color: ${app.getThemeColor('base')}}</style>
       <style>body{--theme-color-faded: ${app.getThemeColor('faded')}}</style>
       <style>body{--theme-color-box-shadow: ${app.getThemeColor('boxShadow')}}</style>
