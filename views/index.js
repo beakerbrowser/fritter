@@ -24,6 +24,7 @@ exports.render = function render () {
       <style>body{--theme-color-faded: ${app.getThemeColor('faded')}}</style>
       <style>body{--theme-color-box-shadow: ${app.getThemeColor('boxShadow')}}</style>
       <style>body{--theme-color-border: ${app.getThemeColor('border')}}</style>
+      <style>body{--muted-text: #657786}</style>
     </body>
   `)
 }
