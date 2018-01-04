@@ -11,7 +11,7 @@ module.exports = function renderPostActions (p) {
   const currentUserUpvoted = app.currentUser && p.votes.upVoters.includes(app.currentUser.url)
   return yo`
     <div class="post-actions">
-      <div class="action">
+      <div class="action reply">
         <span onclick=${e => app.gotoThread(p, e)} class="replies-icon">
           ${renderRepliesIcon()}
         </span>
@@ -23,7 +23,7 @@ module.exports = function renderPostActions (p) {
         : ''}
       </div>
 
-      <div class="action ${currentUserUpvoted ? 'voted' : ''}">
+      <div class="action vote ${currentUserUpvoted ? 'voted' : ''}">
         <span onclick=${e => onToggleLiked(e, p)} class="vote-icon ${currentUserUpvoted ? 'voted' : ''}">
           ${renderHeartIcon()}
         </span>
