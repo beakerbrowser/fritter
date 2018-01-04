@@ -3,6 +3,7 @@
 const yo = require('yo-yo')
 const renderProfileCard = require('../com/profile-card')
 const renderFooter = require('../com/footer')
+const renderWhoToFollow = require('../com/who-to-follow')
 const renderProfileHeader = require('../com/profile-header')
 const renderNewPostForm = require('../com/new-post-form')
 const renderBackToFeed = require('../com/back-to-feed')
@@ -17,6 +18,7 @@ module.exports = function () {
       <div class="sidebar-col">
         ${app.viewedProfile ? renderBackToFeed() : ''}
         ${renderProfileCard(app.viewedProfile || app.currentUserProfile)}
+        ${renderWhoToFollow()}
         ${renderFooter()}
         ${''/* TODO renderFriendsList(app.viewedProfile || app.currentUserProfile) */}
       </div>
