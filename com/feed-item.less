@@ -31,8 +31,14 @@
     }
 
     .name,
+    .timestamp,
+    .text {
+      font-size: .85rem;
+    }
+
+    .name,
+    .bullet,
     .timestamp {
-      font-size: .8rem;
       line-height: 1;
     }
 
@@ -57,50 +63,30 @@
     }
 
     .text {
-      margin-top: 5px;
+      margin-top: 8px;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.4;
     }
 
     .post-content {
       margin-left: 55px;
       line-height: 1;
     }
-
-    .post-actions {
-      margin-left: 55px;
-      height: 13px;
-
-      .count {
-        color: gray;
-        font-size: 11.5px;
-        font-weight: 500;
-        line-height: 1.3;
-        vertical-align: top;
-        margin-left: 5px;
-      }
-    }
   }
 
   &.profile {
+    display: flex;
+    align-items: center;
     background: #fff;
-    padding: 15px;
+    padding: 10px 15px;
     position: relative;
 
-    .profile-feed-item-header {
-      display: flex;
+    .avatar-container {
+      margin-right: 10px;
     }
 
     .follow-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-    }
-
-    .bio {
-      margin-bottom: 0;
-    }
-
-    .url {
-      font-size: .775rem;
+      margin-left: auto;
     }
   }
 }
