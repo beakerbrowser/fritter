@@ -20,7 +20,6 @@
 @import "./views/edit-profile";
 @import "./views/new-user";
 @import "./views/error";
-@import "./views/loading";
 
 *,
 *:before,
@@ -49,12 +48,13 @@ main {
   }
 }
 
+.loading-view,
 .empty {
   background: #fff;
-  padding: 25px;
-  font-size: 0.9rem;
-  color: #666;
-  font-weight: 100;
+  padding: 15px;
+  font-size: 0.8rem;
+  color: var(--muted-text);
+  font-weight: 300;
 }
 
 .new-posts-indicator {
