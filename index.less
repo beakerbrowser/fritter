@@ -99,19 +99,12 @@ main {
 }
 
 .name {
-  font-size: .95rem;
   font-weight: 600;
   cursor: pointer;
 
   &:hover {
     text-decoration: underline;
   }
-}
-
-.text,
-.bio {
-  line-height: 1.425;
-  font-size: .9rem;
 }
 
 a {
@@ -141,18 +134,15 @@ code {
 
   .main-col {
     flex-basis: 60%;
+
+    &.center {
+
+    }
   }
 }
 
-.following-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-  margin-top: 10px;
-}
-
 .timestamp {
-  color: rgba(0, 0, 0, .4);
+  color: var(--muted-text);
 
   &:hover {
 
