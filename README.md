@@ -1,7 +1,5 @@
 # [Fritter](dat://9900f9aad4d6e79e0beb1c46333852b99829e4dfcdfa9b690eeeab3c367c1b9a)
 
----
-
 An example application that demonstrates how to build peer-to-peer Web applications with [Beaker Browser](https://github.com/beakerbrowser/beaker), [Dat](https://github.com/datproject/dat), and [WebDB](https://github.com/beakerbrowser/webdb).
 
 ![Fritter demo](demo.gif)
@@ -72,7 +70,7 @@ Fritter keeps track of the URL for the user's profile with Local Storage under t
 
 ### Try Fritter
 
-Visit [Fritter](dat://9900f9aad4d6e79e0beb1c46333852b99829e4dfcdfa9b690eeeab3c367c1b9a) in [Beaker](https://beakerbrowser.com/docs/install.html) to create your own profile and try it out for yourself! Keep in mind that Fritter is an example application and is missing some features like notifications and search that would make it a viable social media application.
+Visit [Fritter](dat://9900f9aad4d6e79e0beb1c46333852b99829e4dfcdfa9b690eeeab3c367c1b9a) in [Beaker](https://beakerbrowser.com/docs/install.html) to create your own profile. Keep in mind that Fritter is an example application and is missing some features like notifications and search that would make it a viable social media application.
 
 ### Customizing Fritter
 
