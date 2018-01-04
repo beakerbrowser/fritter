@@ -5,17 +5,11 @@ const renderHomeIcon = require('../com/icons/home')
 
 module.exports = function renderHeader () {
   return yo`
-    <footer>
+    <footer class="module">
       <nav>
-        <a href="https://github.com/beakerbrowser/fritter">
-          About Fritter
-        </a>
-        <a href="https://github.com/beakerbrowser/fritter">
-          View source
-        </a>
-        <a href="https://github.com/beakerbrowser/fritter">
-          What is Fritter?
-        </a>
+        <a href="https://github.com/beakerbrowser/fritter">What is Fritter?</a>
+        <a href="dat://beakerbrowser.com">Learn more about Beaker</a>
+        <a href="https://github.com/beakerbrowser/fritter">View Source</a>
       </footer>
     </header>
   `
