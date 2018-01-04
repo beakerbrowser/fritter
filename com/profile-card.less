@@ -3,42 +3,29 @@
 
   .profile-card-header {
     display: flex;
-    margin-bottom: 1rem;
+    align-items: flex-start;
 
-    p {
-      margin: 1.4rem 0 0 0.7rem;
+    .edit-profile-btn,
+    .follow-btn {
+      margin-left: auto;
+      margin-top: -2px;
     }
   }
 
-  .avatar {
-    width: 60px;
-    height: 60px;
-    margin-right: 5px;
+  .avatar-container {
+    margin-right: 7px;
   }
 
   .name {
-    vertical-align: top;
+    font-size: .85rem;
+    vertical-align: middle;
   }
 
   .bio {
-    line-height: 1.4;
-    font-size: .8rem;
-    color: #555;
-    padding: 0.5rem 0;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .btn {
-    font-size: 0.8rem;
-  }
-
-  .profile-link {
-    font-size: 0.8rem;
-    margin-left: 0.5rem;
-
-    svg {
-      fill: var(--theme-color);
-    }
+    margin: 0;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #e6ecf0;
+    font-size: .85rem;
   }
 }

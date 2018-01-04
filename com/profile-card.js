@@ -11,22 +11,21 @@ const renderLinkIcon = require('./icons/link')
 module.exports = function renderProfileCard (profile) {
   if (!profile) return ''
   return yo`
-    <div class="profile-card">
+    <div class="profile-card module">
       <div class="profile-card-header">
         ${renderAvatar(profile)}
-        <div class="profile-card-header-attrs">
-          <p class="name"><a href=${app.profileUrl(profile)} onclick=${e => app.gotoProfile(profile, e)} class="name">${profile.name || 'Anonymous'}</a></p>
+
+        <div class="name">
+          <a href=${app.profileUrl(profile)} onclick=${e => app.gotoProfile(profile, e)} class="name">${profile.name || 'Anonymous'}</a>
         </div>
+
+        ${app.currentUser.url === profile.getRecordOrigin()
+          ? yo`<a href="/edit" onclick=${app.gotoEditProfile} class="btn edit-profile-btn">Edit profile</a>`
+          : renderFollowButton(profile)
+        }
       </div>
 
-      <p class="bio">${profile.bio}</p>
-
-      ${!app.currentUser
-        ? ''
-        : app.currentUser.url === profile.getRecordOrigin()
-          ? yo`<a href="/edit" onclick=${app.gotoEditProfile} class="btn">Edit profile</a>`
-          : renderFollowButton(profile)}
-      <a href=${app.profileUrl(profile)} onclick=${e => app.gotoProfile(profile, e)} title="Profile link" class="profile-link">${renderLinkIcon()} Profile link</a>
+      ${profile.bio ? yo`<p class="bio">${profile.bio}</p>` : ''}
     </div>
   `
 }
