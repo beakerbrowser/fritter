@@ -3,7 +3,7 @@
 const yo = require('yo-yo')
 
 // globals
-let isHovering = false
+let isHovering
 let btnText
 
 // exported api
@@ -13,7 +13,7 @@ module.exports = function renderFollowButton (profile) {
   if (profile.isCurrentUser) return ''
 
   if (app.isCurrentUserFollowing(profile)) {
-    if (isHovering) {
+    if (isHovering === app.profileUrl(profile)) {
       btnText = 'Unfollow'
       cls = 'unfollow'
     } else {
@@ -37,14 +37,14 @@ module.exports = function renderFollowButton (profile) {
 
   function onMouseOver () {
     if (!isHovering) {
-      isHovering = true
+      isHovering = app.profileUrl(profile)
       app.render()
     }
   }
 
   function onMouseOut () {
     if (isHovering) {
-      isHovering = false
+      isHovering = null
       app.render()
     }
   }
