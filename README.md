@@ -29,7 +29,7 @@ A p2p Web app is like any other website or app: it's a collection of HTML, CSS, 
 User profiles on the p2p Web are a bit different than user profiles on the traditional Web. Instead of being stored in a server-side database, they're simply websites! This means you can look at all the files that comprise a profile. Check out Dog Legs McBoots's profile to see for yourself:
 
 ```
-dat://32ac2ce8ad4ed80bd1b6de4cbea7d7b0cad1441fa62312c57a6088394717e41
+dat://232ac2ce8ad4ed80bd1b6de4cbea7d7b0cad1441fa62312c57a6088394717e41
 ```
 
 `profile.json` contains some basic information about the profile:
