@@ -74,7 +74,7 @@ Fritter keeps track of the URL for the user's profile with Local Storage under t
 
 ### Try Fritter
 
-Visit Fritter in [Beaker](https://beakerbrowser.com/docs/install.html) to create your own profile:
+Visit Fritter in [Beaker](https://beakerbrowser.com/docs/install/) to create your own profile:
 
 ```
 dat://9900f9aad4d6e79e0beb1c46333852b99829e4dfcdfa9b690eeeab3c367c1b9a
