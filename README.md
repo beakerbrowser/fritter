@@ -66,7 +66,7 @@ A post includes the content of the post, a timestamp, and if applicable, informa
 
 ### Storing user profiles
 
-Fritter uses [Beaker's DatArchive APIs](https://beakerbrowser.com/docs/apis/dat-archive) to access the Dat network. This makes it possible to store profiles locally on the user's computer, and to transfer profile information directly between user devices.
+Fritter uses [Beaker's DatArchive APIs](https://beakerbrowser.com/docs/apis/dat.html) to access the Dat network. This makes it possible to store profiles locally on the user's computer, and to transfer profile information directly between user devices.
 
 Fritter keeps track of the URL for the user's profile with Local Storage under the key `userUrl`. In a more robust implementation of an app like Fritter, users could switch between their profiles by being prompted to select a profile using Beaker's [`DatArchive.selectArchive()`](https://beakerbrowser.com/docs/apis/dat.html#datarchive-selectarchive) method, and then updating the value of `localStorage.userUrl`.
 
