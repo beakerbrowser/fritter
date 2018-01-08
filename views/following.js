@@ -22,7 +22,7 @@ module.exports = function renderFollowing () {
         ${renderProfileHeader(app.viewedProfile)}
         <div class="view-content ${isEmpty ? 'empty' : ''}">
           ${isEmpty
-            ? `${app.viewedProfile.name} is not following anyone`
+            ? `${app.viewedProfile.name || 'Anonymous'} is not following anyone`
             : yo`<div class="following-list">${app.viewedProfile.follows.map(renderProfileListingItem)}</div>`
           }
         </div>

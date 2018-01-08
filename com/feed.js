@@ -2,6 +2,7 @@
 
 const yo = require('yo-yo')
 const renderAvatar = require('./avatar')
+const renderName = require('./name')
 const renderPostActions = require('./post-actions')
 const {timestamp} = require('../lib/util')
 
@@ -28,7 +29,7 @@ function renderFeedItem (p) {
       <div class="post-content">
         <div class="post-header">
           <div>
-            <a href=${app.profileUrl(p.author)} onclick=${e => app.gotoProfile(p.author, e)} class="name">${p.author.name}</a>
+            ${renderName(p.author)}
             <span class="timestamp">
               <span class="bullet">•</span>
               <a href=${app.threadUrl(p)} class="value">${timestamp(p.createdAt)}</a>
@@ -38,7 +39,7 @@ function renderFeedItem (p) {
           ${p.threadParent ? yo`
             <div class="reply-info" onclick=${e => app.gotoThread(p.threadParent, e)}>
               Replying to
-              <span class="url" >${p.threadParent.author.name}</span>
+              <span class="url" >${renderName(p.threadParent.author)}</span>
             </div>`
           : ''}
         </div>

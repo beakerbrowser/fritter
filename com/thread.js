@@ -2,6 +2,7 @@
 
 const yo = require('yo-yo')
 const renderAvatar = require('./avatar')
+const renderName = require('./name')
 const renderFollowButton = require('./follow-btn')
 const renderPostActions = require('./post-actions')
 const renderReply = require('./post-reply')
@@ -28,7 +29,7 @@ module.exports = function renderThread () {
           ${renderAvatar(viewedPost)}
 
             <div>
-              <a class="name" href=${app.profileUrl(viewedPost.author)} onclick=${e => app.gotoProfile(viewedPost.author, e)}>${viewedPost.author.name}</a>
+              ${renderName(viewedPost.author)}
 
               <div class="timestamp">
                 <a href=${app.threadUrl(viewedPost)} class="value">${timestamp(viewedPost.createdAt)}</a>

@@ -2,6 +2,7 @@
 
 const yo = require('yo-yo')
 const renderAvatar = require('./avatar')
+const renderName = require('./name')
 const renderFollowButton = require('./follow-btn')
 
 // exported api
@@ -29,7 +30,7 @@ function renderProfile (profile) {
   return yo`
     <div class="profile">
       ${renderAvatar(profile, 'small')}
-      <a class="name" onclick=${e => app.gotoProfile(profile, e)}>${profile.name}</div>
+      ${renderName(profile)}
       ${renderFollowButton(profile)}
     </div>
   `

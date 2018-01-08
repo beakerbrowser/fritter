@@ -2,6 +2,7 @@
 
 const yo = require('yo-yo')
 const renderAvatar = require('./avatar')
+const renderName = require('./name')
 const renderFollowButton = require('./follow-btn')
 const renderLinkIcon = require('./icons/link')
 
@@ -16,7 +17,7 @@ module.exports = function renderProfileCard (profile) {
         ${renderAvatar(profile)}
 
         <div class="name">
-          <a href=${app.profileUrl(profile)} onclick=${e => app.gotoProfile(profile, e)} class="name">${profile.name || 'Anonymous'}</a>
+          ${renderName(profile)}
         </div>
 
         ${app.currentUser.url === profile.getRecordOrigin()

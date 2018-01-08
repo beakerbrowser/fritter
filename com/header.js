@@ -24,7 +24,7 @@ module.exports = function renderHeader () {
         </a>
 
         <span class="nav-item profile" onclick=${e => app.gotoProfile(app.currentUserProfile, e)}>
-          <span class="label name">${app.currentUserProfile.name}</span>
+          <span class="label name">${app.currentUserProfile.name || 'Anonymous'}</span>
           ${renderAvatar(app.currentUserProfile, 'small')}
         </span>
 

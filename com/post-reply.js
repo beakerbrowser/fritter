@@ -2,6 +2,7 @@
 
 const yo = require('yo-yo')
 const renderAvatar = require('./avatar')
+const renderName = require('./name')
 const renderPostActions = require('./post-actions')
 const {timestamp} = require('../lib/util')
 
@@ -14,7 +15,7 @@ module.exports = function renderReply (r) {
       ${renderAvatar(r.author)}
       <div class="post-content">
         <div class="post-header">
-          <a href=${app.profileUrl(r.author)} onclick=${e => app.gotoProfile(r.author, e)} class="name">${r.author.name}</a>
+          ${renderName(r.author)}
           <span class="timestamp">
             <span class="bullet">•</span>
             <a href=${app.threadUrl(r)} class="value">${timestamp(r.createdAt)}</a>
