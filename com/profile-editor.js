@@ -15,7 +15,7 @@ module.exports = function renderProfileEditor () {
 
   return yo`
     <div>
-      <h2>${isNew ? 'Create' : 'Edit'} your profile</h2>
+      <h2>${isNew ? 'Create' : 'Edit'} profile</h2>
 
       <form class="edit-profile" onsubmit=${onSaveProfile}>
 

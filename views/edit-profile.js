@@ -4,6 +4,7 @@ const yo = require('yo-yo')
 const renderProfileCard = require('../com/profile-card')
 const renderFooter = require('../com/footer')
 const renderProfileEditor = require('../com/profile-editor')
+const renderProfilePicker = require('../com/profile-picker')
 
 // exported api
 // =
@@ -19,6 +20,10 @@ module.exports = function () {
       <div class="main-col">
         <div class="edit-profile-view">
           ${renderProfileEditor()}
+        </div>
+
+        <div class="edit-profile-view">
+          ${renderProfilePicker()}
         </div>
       </div>
     </div>

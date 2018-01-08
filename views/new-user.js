@@ -2,6 +2,7 @@
 
 const yo = require('yo-yo')
 const renderProfileEditor = require('../com/profile-editor')
+const renderProfilePicker = require('../com/profile-picker')
 
 // exported api
 // =
@@ -28,6 +29,10 @@ module.exports = function () {
           <a href="dat://232ac2ce8ad4ed80bd1b6de4cbea7d7b0cad1441fa62312c57a6088394717e41/" target="_blank">
           Dog Legs McBoots's profile</a> to see for yourself.
         </p>
+      </div>
+
+      <div>
+        ${renderProfilePicker()}
       </div>
 
       <div>
