@@ -7,8 +7,6 @@ const yo = require('yo-yo')
 
 module.exports = function renderProfilePicker () {
   const isNew = !app.currentUserProfile
-  let profileUrlInput = document.querySelector('input[name="profileUrl"]')
-  let profileImportSubmitBtn = document.getElementById('import-profile-btn')
 
   return yo`
     <div>
@@ -29,6 +27,9 @@ module.exports = function renderProfilePicker () {
   `
 
   async function onSelectProfile (e) {
+    let profileUrlInput = document.querySelector('input[name="profileUrl"]')
+    let profileImportSubmitBtn = document.getElementById('import-profile-btn')
+
     var profileArchive = await DatArchive.selectArchive({
       title: 'Choose an existing profile',
       buttonLabel: 'Use this profile',
@@ -40,6 +41,8 @@ module.exports = function renderProfilePicker () {
   }
 
   function validateProfileUrl (e) {
+    let profileUrlInput = document.querySelector('input[name="profileUrl"]')
+    let profileImportSubmitBtn = document.getElementById('import-profile-btn')
     const isDatHashRegex = /^[a-z0-9]{64}/i
     let profileUrl = e.target.value
 
