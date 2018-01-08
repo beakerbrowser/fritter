@@ -10,7 +10,8 @@ let btnText
 // =
 
 module.exports = function renderFollowButton (profile) {
-  if (profile.isCurrentUser) return ''
+  const profileUrl = profile.url || profile.getRecordOrigin()
+  if (app.currentUser.url === profileUrl) return ''
 
   if (app.isCurrentUserFollowing(profile)) {
     if (isHovering === app.profileUrl(profile)) {
