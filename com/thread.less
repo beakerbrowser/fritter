@@ -44,6 +44,38 @@
       overflow: hidden;
     }
 
+    .post-votes-preview {
+      display: inline-flex;
+      align-items: center;
+      width: ~"calc(100% - 75px)";
+      height: 40px;
+      margin-left: 60px;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+
+      > * {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .votes-label {
+        height: 100%;
+        font-size: .85rem;
+        font-weight: 300;
+        color: var(--muted-text);
+        padding-right: 5px;
+        border-right: 1px solid #eee;
+      }
+
+      .upvoters {
+        padding-left: 5px;
+
+        .avatar-container {
+          margin-right: 5px;
+        }
+      }
+    }
+
     .post-actions {
       margin-top: 15px;
       margin-left: 60px;

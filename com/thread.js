@@ -5,6 +5,7 @@ const renderAvatar = require('./avatar')
 const renderName = require('./name')
 const renderFollowButton = require('./follow-btn')
 const renderPostActions = require('./post-actions')
+const renderPostVotesPreview = require('./post-votes-preview')
 const renderReply = require('./post-reply')
 const {timestamp} = require('../lib/util')
 
@@ -40,6 +41,8 @@ module.exports = function renderThread () {
         </div>
 
         <div class="text">${viewedPost.text}</div>
+
+        ${renderPostVotesPreview(viewedPost)}
 
         ${renderPostActions(viewedPost)}
       </div>
