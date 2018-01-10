@@ -27,7 +27,7 @@ module.exports = function renderThread () {
 
       <div class="main-post">
         <div class="post-header">
-          ${renderAvatar(viewedPost)}
+          ${renderAvatar(viewedPost.author)}
 
             <div>
               ${renderName(viewedPost.author)}
