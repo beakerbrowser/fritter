@@ -2,6 +2,7 @@
 
 const yo = require('yo-yo')
 const renderFollowButton = require('./follow-btn')
+const {linkifyText} = require('../lib/util')
 
 // exported api
 // =
@@ -33,7 +34,7 @@ module.exports = function renderProfile () {
         <span class="name">${app.viewedProfile.name}</span>
       </div>
 
-      <p class="bio">${app.viewedProfile.bio}</p>
+      <p class="bio">${linkifyText(app.viewedProfile.bio, {cls: 'url'})}</p>
 
       ${isUserProfile ? '' : renderFollowButton(app.viewedProfile)}
     </div>

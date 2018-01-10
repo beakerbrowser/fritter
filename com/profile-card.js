@@ -5,6 +5,7 @@ const renderAvatar = require('./avatar')
 const renderName = require('./name')
 const renderFollowButton = require('./follow-btn')
 const renderLinkIcon = require('./icons/link')
+const {linkifyText} = require('../lib/util')
 
 // exported api
 // =
@@ -26,7 +27,7 @@ module.exports = function renderProfileCard (profile) {
         }
       </div>
 
-      ${profile.bio ? yo`<p class="bio">${profile.bio}</p>` : ''}
+      ${profile.bio ? yo`<p class="bio">${linkifyText(profile.bio, {cls: 'url'})}</p>` : ''}
     </div>
   `
 }

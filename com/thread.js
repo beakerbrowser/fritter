@@ -7,7 +7,7 @@ const renderFollowButton = require('./follow-btn')
 const renderPostActions = require('./post-actions')
 const renderPostVotesPreview = require('./post-votes-preview')
 const renderReply = require('./post-reply')
-const {timestamp} = require('../lib/util')
+const {linkifyText, timestamp} = require('../lib/util')
 
 // exported api
 // =
@@ -40,7 +40,7 @@ module.exports = function renderThread () {
           ${renderFollowButton(viewedPost.author)}
         </div>
 
-        <div class="text">${viewedPost.text}</div>
+        <div class="text">${linkifyText(viewedPost.text, {cls: 'url'})}</div>
 
         ${renderPostVotesPreview(viewedPost)}
 
