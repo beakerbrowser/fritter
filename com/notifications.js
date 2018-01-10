@@ -23,9 +23,10 @@ module.exports = function renderFeed () {
 // =
 
 function renderNotification (n) {
+  const unreadCls = (app.notificationsLastReadTS < n.createdAt) ? 'unread' : ''
   if (n.type === 'vote') {
     return yo`
-      <div class="feed-item like" onclick=${e => app.gotoThread(n.post, e)}>
+      <div class="feed-item like ${unreadCls}" onclick=${e => app.gotoThread(n.post, e)}>
         ${renderHeartIcon()}
         <div class="like-content">
           <div class="like-header">
@@ -58,7 +59,7 @@ function renderNotification (n) {
   if (n.type === 'reply') {
     let p = n.post
     return yo`
-      <div class="feed-item post" onclick=${e => app.gotoThread(p, e)}>
+      <div class="feed-item post ${unreadCls}" onclick=${e => app.gotoThread(p, e)}>
         ${renderAvatar(p.author)}
         <div class="post-content">
           <div class="post-header">

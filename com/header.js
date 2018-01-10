@@ -22,6 +22,7 @@ module.exports = function renderHeader () {
         <a class="nav-item ${app.currentView === 'notifications' ? 'active' : ''}" href="/notifications" onclick=${app.gotoNotifications}>
           <span class="icon settings">${renderErrorIcon()}</span>
           <span class="label">Notifications</span>
+          ${app.unreadNotifications ? yo`<span class="count">${app.unreadNotifications}</span>` : ''}
         </a>
 
         <a class="nav-item ${app.currentView === 'edit' ? 'active' : ''}" href="/edit" onclick=${app.gotoEditProfile}>
