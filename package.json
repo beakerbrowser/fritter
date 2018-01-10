@@ -26,13 +26,13 @@
   },
   "homepage": "https://github.com/beakerbrowser/fritter#readme",
   "dependencies": {
-    "@beaker/libfritter": "^2.0.0",
-    "nanorouter": "^2.1.0",
+    "@beaker/libfritter": "^2.1.2",
+    "nanorouter": "^2.2.0",
     "yo-yo": "^1.4.1"
   },
   "devDependencies": {
     "browserify": "^14.5.0",
     "less": "^2.7.3",
-    "uglify-es": "^3.2.2"
+    "uglify-es": "^3.3.5"
   }
 }

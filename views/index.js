@@ -7,6 +7,7 @@ const renderFriends = require('./friends')
 const renderFollowing = require('./following')
 const renderThread = require('./thread')
 const renderNewUser = require('./new-user')
+const renderNotifications = require('./notifications')
 const renderEditProfile = require('./edit-profile')
 const renderLoading = require('./loading')
 const renderError = require('./error')
@@ -45,6 +46,11 @@ function renderView () {
         return renderLoading()
       }
       return renderThread()
+    case 'notifications':
+      if (!app.notifications) {
+        return renderLoading()
+      }
+      return renderNotifications()
     case 'edit':
       return renderEditProfile()
     case 'user':

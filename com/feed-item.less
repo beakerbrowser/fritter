@@ -8,7 +8,8 @@
     margin-right: 5px;
   }
 
-  &.post {
+  &.post,
+  &.like {
     position: relative;
     background: #fff;
     border-bottom: 1px solid #eee;
@@ -23,10 +24,8 @@
       background: #f5f8fa;
     }
 
-    .avatar {
-      position: absolute;
-      left: 15px;
-      top: 12px;
+    &.unread {
+      background: #f5f8fa;      
     }
 
     .name,
@@ -53,6 +52,14 @@
     .bullet {
       font-size: .6rem;
     }
+  }
+
+  &.post {
+    .avatar {
+      position: absolute;
+      left: 15px;
+      top: 12px;
+    }
 
     .reply-info {
       font-size: 0.8rem;
@@ -77,6 +84,76 @@
     .post-content {
       margin-left: 55px;
       line-height: 1;
+    }
+
+    .post-quote {
+      padding: 8px 10px;
+      margin-top: 8px;
+      border: 1px solid #eee;
+      border-radius: 2px;
+
+      .text {
+        margin: 0;
+      }
+    }
+  }
+
+  &.like {
+    .icon {
+      position: absolute;
+      left: 46px;
+      top: 20px;
+      height: 16px;
+      width: 16px;
+      * {
+        fill: crimson;
+        stroke: crimson;
+      }
+    }
+
+    .reply-info {
+      font-size: 0.8rem;
+      margin: 10px 0;
+      color: rgba(0, 0, 0, .6);
+      cursor: pointer;
+
+      .url .name {
+        color: inherit;
+        font-weight: normal;
+        font-size: inherit;
+      }
+    }
+
+    .text {
+      margin-top: 8px;
+      line-height: 1.4;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .like-header {
+      font-size: 0.8rem;
+
+      .avatar {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .like-content {
+      margin-left: 55px;
+      line-height: 1;
+    }
+
+    .post-quote {
+      padding: 8px 10px;
+      margin-top: 8px;
+      border: 1px solid #eee;
+      border-radius: 2px;
+
+      .text {
+        margin-bottom: 0;
+      }
     }
   }
 
