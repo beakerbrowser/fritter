@@ -2,6 +2,7 @@
 
 const yo = require('yo-yo')
 const renderHomeIcon = require('../com/icons/home')
+const renderErrorIcon = require('../com/icons/error')
 const renderSettingsIcon = require('../com/icons/settings')
 const renderAvatar = require('../com/avatar')
 
@@ -13,9 +14,14 @@ module.exports = function renderHeader () {
   return yo`
     <header>
       <nav>
-        <a class="nav-item ${app.currentView === 'feed' ? 'active' : ''}" onclick=${e => app.gotoFeed(e)} href="/">
+        <a class="nav-item ${app.currentView === 'feed' ? 'active' : ''}" onclick=${app.gotoFeed} href="/">
           <span class="icon">${renderHomeIcon()}</span>
           <span class="label">Home</span>
+        </a>
+
+        <a class="nav-item ${app.currentView === 'notifications' ? 'active' : ''}" href="/notifications" onclick=${app.gotoNotifications}>
+          <span class="icon settings">${renderErrorIcon()}</span>
+          <span class="label">Notifications</span>
         </a>
 
         <a class="nav-item ${app.currentView === 'edit' ? 'active' : ''}" href="/edit" onclick=${app.gotoEditProfile}>
