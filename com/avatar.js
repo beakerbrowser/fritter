@@ -10,7 +10,7 @@ module.exports = function renderAvatar (profile, cls = '') {
   let imgEl
   if (profile.avatar) {
     // if it's defined, use the path declared in profile.avatar
-    const avatarUrl = `${profile.getRecordOrigin ? profile.getRecordOrigin() : profile.url}/${profile.avatar}?cache=${Date.now()}`
+    const avatarUrl = `${profile.getRecordOrigin ? profile.getRecordOrigin() : profile.url}/${profile.avatar}`
     imgEl = yo`<img src=${avatarUrl} class="avatar ${cls}"/>`
   } else {
     // otherwise guess the avatar's path

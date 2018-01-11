@@ -9,7 +9,7 @@ const renderFollowButton = require('./follow-btn')
 // =
 
 module.exports = function renderWhoToFollow () {
-  if (!app.whoToFollow.length) return ''
+  if (!app.whoToFollow || !app.whoToFollow.length) return ''
 
   return yo`
     <div class="who-to-follow module">
