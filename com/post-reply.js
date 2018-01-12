@@ -11,7 +11,7 @@ const {linkifyText} = require('../lib/util')
 // =
 
 module.exports = function renderReply (r) {
-  let cls
+  let cls = ''
   if (r.threadParent !== r.threadRoot) {
     cls = 'grandchild'
   }
