@@ -11,8 +11,13 @@ const {linkifyText} = require('../lib/util')
 // =
 
 module.exports = function renderReply (r) {
+  let cls
+  if (r.threadParent !== r.threadRoot) {
+    cls = 'grandchild'
+  }
+
   return yo`
-    <div class="reply feed-item post ${r.threadRoot == r.threadParent ? '' : 'grandchild'}" onclick=${e => app.gotoThread(r, e)}>
+    <div class="reply feed-item post ${cls}" onclick=${e => app.gotoThread(r, e)}>
       ${renderAvatar(r.author)}
       <div class="post-content">
         <div class="post-header">

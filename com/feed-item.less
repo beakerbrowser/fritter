@@ -158,7 +158,19 @@
   }
 
   &.grandchild {
-    margin-left: 30px;
+    position: relative;
+
+    &:before {
+      display: block;
+      content: '';
+      position: absolute;
+      left: 36px;
+      top: -55px;
+      width: 4px;
+      height: 60px;
+      background: var(--theme-color-border);
+      border-radius: 4px;
+    }
   }
 
   &.profile {
