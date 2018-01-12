@@ -6,7 +6,7 @@ An example application that demonstrates how to build peer-to-peer Web applicati
 
 ## Features
 
-Fritter is a simple Twitter clone; it implements:
+Fritter is a simple social feed application; it implements:
 
 - Writing posts
 - Replying to posts
