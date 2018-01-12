@@ -23,19 +23,11 @@ module.exports = function () {
       </div>
 
       <div>
-        ${renderProfileEditor()}
-      </div>
-
-      <div>
         ${renderProfilePicker()}
       </div>
 
       <div>
-        <h2>Learn more</h2>
-        <p>
-          View <a href="https://github.com/beakerbrowser/fritter">Fritter's source
-          code</a> to learn more about building peer-to-peer Web apps.
-        </p>
+        ${renderProfileEditor()}
       </div>
     </div>
   `
