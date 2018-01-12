@@ -1,6 +1,6 @@
 {
-  "url": "dat://d899505bfa7ad0c6f0d009798fc3a8e8ad9a8d3789873529278449ad5b9a39fd/",
-  "title": "Fritter",
+  "url": "dat://196bc942fea44be56bea3c40ec8d5a752f47e5f765e8bdef5df5723d6f7919b6/",
+  "title": "Fritter Dev",
   "description": "An example app for Beaker and WebDB (a simple twitter clone)",
   "fallback_page": "/index.html"
 }
