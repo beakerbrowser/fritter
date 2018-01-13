@@ -12,7 +12,9 @@ module.exports = function renderProfileListingItem (profile) {
     <div class="feed-item profile" onclick=${e => app.gotoProfile(profile, e)}>
         ${renderAvatar(profile, 'small')}
 
-        <div class="name" onclick=${e => app.gotoProfile(profile, e)}>${profile.name || 'Anonymous'}</div>
+        <a href=${app.profileUrl(profile)} class="name" onclick=${e => app.gotoProfile(profile, e)}>
+          ${profile.name || 'Anonymous'}
+        </a>
 
         ${renderFollowButton(profile)}
     </div>
