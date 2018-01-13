@@ -8,7 +8,7 @@ const renderFollowing = require('./following')
 const renderThread = require('./thread')
 const renderNewUser = require('./new-user')
 const renderNotifications = require('./notifications')
-const renderEditProfile = require('./edit-profile')
+const renderSettings = require('./settings')
 const renderLoading = require('./loading')
 const renderError = require('./error')
 
@@ -52,8 +52,8 @@ function renderView () {
         return renderLoading()
       }
       return renderNotifications()
-    case 'edit':
-      return renderEditProfile()
+    case 'settings':
+      return renderSettings()
     case 'user':
       if (app.currentSubview === 'following') {
         return renderFollowing()

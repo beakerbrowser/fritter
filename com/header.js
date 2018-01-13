@@ -25,7 +25,7 @@ module.exports = function renderHeader () {
           ${app.unreadNotifications ? yo`<span class="count">${app.unreadNotifications}</span>` : ''}
         </a>
 
-        <a class="nav-item ${app.currentView === 'edit' ? 'active' : ''}" href="/edit" onclick=${app.gotoEditProfile}>
+        <a class="nav-item ${app.currentView === 'settings' ? 'active' : ''}" href="/settings" onclick=${app.gotoSettings}>
           <span class="icon settings">${renderSettingsIcon()}</span>
           <span class="label">Settings</span>
         </a>

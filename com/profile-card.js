@@ -22,7 +22,7 @@ module.exports = function renderProfileCard (profile) {
         </div>
 
         ${app.currentUser.url === profile.getRecordOrigin()
-          ? yo`<a href="/edit" onclick=${app.gotoEditProfile} class="btn edit-profile-btn">Edit profile</a>`
+          ? yo`<a href="/settings" onclick=${app.gotoSettings} class="btn edit-profile-btn">Edit profile</a>`
           : renderFollowButton(profile)
         }
       </div>
