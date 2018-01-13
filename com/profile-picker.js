@@ -13,7 +13,7 @@ module.exports = function renderProfilePicker () {
       <h2>${isNew ? 'Use existing' : 'Use a different'} profile</h2>
 
       <form id="import-profile" onsubmit=${onImportProfile}>
-        <button type="button" onclick=${onSelectProfile} class="btn">Select profile from your Library</button>
+        <button type="button" onclick=${onSelectProfile} class="btn">Select profile from Library</button>
 
         <p>
           <input oninput=${validateProfileUrl} name="profileUrl" type="text" placeholder="Your profile URL"/>
