@@ -13,6 +13,7 @@ module.exports = function renderFollowButton (profile) {
   const profileUrl = profile.url || profile.getRecordOrigin()
   if (app.currentUser.url === profileUrl) return ''
 
+  let cls = ''
   if (app.isCurrentUserFollowing(profile)) {
     if (isHovering === app.profileUrl(profile)) {
       btnText = 'Unfollow'

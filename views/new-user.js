@@ -1,4 +1,4 @@
-/* globals app */
+/* globals */
 
 const yo = require('yo-yo')
 const renderProfileEditor = require('../com/profile-editor')
@@ -32,4 +32,3 @@ module.exports = function () {
     </div>
   `
 }
-

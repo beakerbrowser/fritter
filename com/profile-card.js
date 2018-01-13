@@ -4,7 +4,6 @@ const yo = require('yo-yo')
 const renderAvatar = require('./avatar')
 const renderName = require('./name')
 const renderFollowButton = require('./follow-btn')
-const renderLinkIcon = require('./icons/link')
 const {linkifyText} = require('../lib/util')
 
 // exported api

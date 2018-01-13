@@ -1,5 +1,4 @@
 const yo = require('yo-yo')
-const renderHomeIcon = require('../com/icons/home')
 
 // exported api
 

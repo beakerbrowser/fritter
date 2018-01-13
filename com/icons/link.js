@@ -9,4 +9,3 @@ module.exports = function render () {
 </svg>
   `)
 }
-

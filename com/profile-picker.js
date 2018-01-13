@@ -1,4 +1,4 @@
-/* globals app window */
+/* globals app window DatArchive */
 
 const yo = require('yo-yo')
 

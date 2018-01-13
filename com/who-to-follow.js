@@ -22,7 +22,6 @@ module.exports = function renderWhoToFollow () {
   `
 }
 
-
 // internal methods
 // =
 
