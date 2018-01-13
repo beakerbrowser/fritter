@@ -51,7 +51,7 @@ module.exports = function renderThread () {
         ${renderAvatar(app.currentUserProfile)}
         <textarea
           placeholder="Write a reply"
-          style="border-color: ${app.getThemeColor('border')}"
+          style="border-color: ${app.getAppColor('border')}"
           onfocus=${onToggleIsReplying}
           onblur=${onToggleIsReplying}
           onkeyup=${onChangeReplyDraft}>${app.replyDraftText}</textarea>

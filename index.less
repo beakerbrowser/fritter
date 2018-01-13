@@ -21,6 +21,8 @@
 @import "./views/new-user";
 @import "./views/error";
 
+@muted-text: #828282;
+
 *,
 *:before,
 *:after {
@@ -28,11 +30,11 @@
 }
 
 html {
-  background: #e6ecf0;
+  background: #eee;
 }
 
 body {
-  background: #e6ecf0;
+  background: #eee;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -57,7 +59,7 @@ main {
   background: #fff;
   padding: 15px;
   font-size: 0.8rem;
-  color: var(--muted-text);
+  color: @muted-text;
   font-weight: 300;
 }
 
@@ -151,7 +153,7 @@ code {
 }
 
 .timestamp {
-  color: var(--muted-text);
+  color: @muted-text;
 
   &:hover {
 

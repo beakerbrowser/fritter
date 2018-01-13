@@ -16,7 +16,7 @@ module.exports = function renderNewPostForm () {
 
         <textarea
           placeholder="Write a post"
-          style="border-color: ${app.getThemeColor('border')}; height: ${isEditingPost ? '60px' : '35px'};"
+          style="border-color: ${app.getAppColor('border')}; height: ${isEditingPost ? '60px' : '35px'};"
           onfocus=${onToggleNewPostForm}
           onblur=${onToggleNewPostForm}
           onkeyup=${onChangePostDraft}>${app.postDraftText}</textarea>
