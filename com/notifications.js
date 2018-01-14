@@ -5,7 +5,7 @@ const renderAvatar = require('./avatar')
 const renderName = require('./name')
 const renderPostActions = require('./post-actions')
 const renderHeartIcon = require('./icons/heart')
-const {timestamp} = require('../lib/util')
+const {timestamp, linkifyText} = require('../lib/util')
 
 // exported api
 // =
@@ -50,7 +50,7 @@ function renderNotification (n) {
                 </span>
               </div>
             </div>
-            <p class="text">${n.post.text}</p>
+            <p class="text">${linkifyText(n.post.text, {cls: 'url'})}</p>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@ function renderNotification (n) {
             : ''}
           </div>
 
-          <p class="text">${p.text}</p>
+          <p class="text">${linkifyText(p.text, {cls: 'url'})}</p>
         </div>
 
         ${renderPostActions(p)}
