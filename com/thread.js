@@ -40,7 +40,7 @@ module.exports = function renderThread () {
           ${renderFollowButton(viewedPost.author)}
         </div>
 
-        <div class="text">${linkifyText(viewedPost.text, {cls: 'url'})}</div>
+        <div class="text">${linkifyText(viewedPost.text, {cls: 'url', inlineImages: true})}</div>
 
         ${renderPostVotesPreview(viewedPost)}
 

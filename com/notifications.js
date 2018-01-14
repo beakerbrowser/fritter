@@ -50,7 +50,7 @@ function renderNotification (n) {
                 </span>
               </div>
             </div>
-            <p class="text">${linkifyText(n.post.text, {cls: 'url'})}</p>
+            <p class="text">${linkifyText(n.post.text, {cls: 'url', inlineImages: true})}</p>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@ function renderNotification (n) {
             : ''}
           </div>
 
-          <p class="text">${linkifyText(p.text, {cls: 'url'})}</p>
+          <p class="text">${linkifyText(p.text, {cls: 'url', inlineImages: true})}</p>
         </div>
 
         ${renderPostActions(p)}
