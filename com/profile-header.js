@@ -10,7 +10,7 @@ module.exports = function renderProfileHeader (profile) {
     <div class="profile-header">
       <div onclick=${e => app.setSubview('feed')} class="nav-link ${app.currentSubview !== 'following' ? 'active' : ''}">
         <div class="label">Posts</div>
-        <div class="value">${app.posts.length}</div>
+        <div class="value">${app.viewedProfilePostsCount}</div>
       </div>
 
       <div onclick=${e => app.setSubview('following')} class="nav-link ${app.currentSubview === 'following' ? 'active' : ''}">
