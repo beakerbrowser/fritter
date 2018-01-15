@@ -15,6 +15,9 @@ module.exports = function renderFeed () {
       ${!app.posts.length ? yo`<div class="empty">No posts yet! Maybe you should change that?</div>` : ''}
       <div class="new-posts-indicator"></div>
       ${app.posts.map(renderFeedItem)}
+      <button class="show-posts-btn load-more" onclick=${() => app.loadMorePosts(app.viewedProfile)}>
+        ${app.isLoadingPosts ? 'Loading...' : 'Load more posts'}
+      </button>
     </div>
   `
 }

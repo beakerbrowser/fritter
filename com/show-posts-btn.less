@@ -1,0 +1,28 @@
+.show-posts-btn {
+  width: 100%;
+  padding: 10px 15px;
+  color: var(--theme-color);
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  font-size: .85rem;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background: #f5f8fa;
+  }
+
+  &:empty {
+    display: none;
+  }
+
+  &.load-more {
+    background: var(--theme-color);
+    color: #fff;
+
+    &:hover {
+      background: var(--primary-btn-hover);
+    }
+  }
+}

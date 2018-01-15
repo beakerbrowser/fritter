@@ -22,6 +22,7 @@ exports.render = function render () {
       </main>
 
       <style>body{--theme-color: ${app.getAppColor('base')}}</style>
+      <style>body{--primary-btn-hover: ${app.getAppColor('primaryBtnHover')}}</style>
       <style>body{--theme-color-faded: ${app.getAppColor('faded')}}</style>
       <style>body{--theme-color-box-shadow: ${app.getAppColor('boxShadow')}}</style>
       <style>body{--theme-color-border: ${app.getAppColor('border')}}</style>

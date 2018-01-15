@@ -15,6 +15,7 @@
 @import "./com/crop-popup";
 @import "./com/following";
 @import "./com/who-to-follow";
+@import "./com/show-posts-btn";
 
 @import "./views/feed";
 @import "./views/settings";
@@ -61,24 +62,6 @@ main {
   font-size: 0.8rem;
   color: @muted-text;
   font-weight: 300;
-}
-
-.new-posts-indicator {
-  background: #fafafa;
-  cursor: pointer;
-  padding: 10px 15px;
-  text-align: center;
-  color: var(--theme-color);
-  border-top: 1px solid #e6ecf0;
-  border-bottom: 1px solid #e6ecf0;
-
-  &:hover {
-    background: #f5f8fa;
-  }
-
-  &:empty {
-    display: none;
-  }
 }
 
 .avatar-container {
