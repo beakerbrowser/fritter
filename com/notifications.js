@@ -15,6 +15,9 @@ module.exports = function renderFeed () {
     <div class="feed">
       ${!app.notifications.length ? yo`<div class="empty">No notifications yet!</div>` : ''}
       ${app.notifications.map(renderNotification)}
+      <button class="show-posts-btn load-more" onclick=${() => app.loadMoreNotifications()}>
+        Load more
+      </button>
     </div>
   `
 }
