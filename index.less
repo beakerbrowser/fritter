@@ -157,11 +157,39 @@ h6 {
 }
 
 .module {
+  position: relative;
+  font-size: .85rem;
   margin-bottom: 15px;
   padding: 15px;
   background: #fff;
 
+  *:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
   h2 {
     font-size: 1rem;
   }
+
+  .dismiss-btn {
+    display: none;
+  }
+
+  &:hover {
+
+    .dismiss-btn {
+      display: block;
+    }
+  }
+}
+
+#profile-url {
+  opacity: 0;
+  height: 0;
 }

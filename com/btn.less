@@ -19,6 +19,10 @@ button {
   line-height: 25px;
   vertical-align: middle;
 
+  svg {
+    fill: var(--theme-color);
+  }
+
   &:hover {
     background: var(--theme-color-faded);
     text-decoration: none;
@@ -31,6 +35,10 @@ button {
 
   &:disabled {
     cursor: not-allowed;
+  }
+
+  &.full-width {
+    width: 100%;
   }
 
   &.primary,
@@ -60,6 +68,31 @@ button {
     &.unfollow {
       background: #c40e0e;
       border-color: #c40e0e;
+    }
+  }
+
+  &.dismiss-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 17px;
+    width: 17px;
+    line-height: 17px;
+    vertical-align: middle;
+    text-align: center;
+    border: 0;
+    background: #fff;
+    padding: 0;
+    color: var(--muted-text);
+    opacity: .4;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:before {
+      content: '✕';
+      font-size: .7rem;
     }
   }
 }
