@@ -27,7 +27,7 @@ exports.render = function render () {
       <style>body{--theme-color-box-shadow: ${app.getAppColor('boxShadow')}}</style>
       <style>body{--theme-color-border: ${app.getAppColor('border')}}</style>
       <style>body{--theme-color-hover: ${app.getAppColor('hover')}}</style>
-      <input id="profile-url" type="text" value=${app.currentUser.url}>
+      <input id="profile-url" type="text" value=${app.currentUser ? app.currentUser.url : ''}>
     </body>
   `)
 }
