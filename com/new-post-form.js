@@ -33,7 +33,6 @@ module.exports = function renderNewPostForm () {
   }
 
   function onChangePostDraft (e) {
-    const oldLen = app.postDraftText.length
     app.postDraftText = e.target.value
     rerender()
   }
