@@ -10,6 +10,6 @@ module.exports = function renderFooter () {
         <a href="dat://beakerbrowser.com">Learn more about Beaker</a>
         <a href="https://github.com/beakerbrowser/fritter">View Source</a>
       </footer>
-    </header>
+    </footer>
   `
 }
