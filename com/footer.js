@@ -2,7 +2,7 @@ const yo = require('yo-yo')
 
 // exported api
 
-module.exports = function renderHeader () {
+module.exports = function renderFooter () {
   return yo`
     <footer class="module">
       <nav>
