@@ -103,6 +103,7 @@
   }
 
   &.like {
+
     .icon {
       position: absolute;
       left: 46px;
@@ -129,20 +130,15 @@
     }
 
     .text {
-      margin-top: -10px;
       line-height: 1.4;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: pre-line;
+      margin-top: 8px;
     }
 
     .like-header {
-      font-size: 0.8rem;
-
-      .avatar {
-        width: 30px;
-        height: 30px;
-      }
+      font-size: 0.85rem;
     }
 
     .like-content {
@@ -199,5 +195,12 @@
     .text {
       margin-top: 8px;
     }
+  }
+}
+
+.notifications .feed-item.post {
+
+  .text {
+    margin-top: 8px;
   }
 }

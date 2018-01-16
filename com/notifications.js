@@ -34,7 +34,7 @@ function renderNotification (n) {
         <div class="like-content">
           <div class="like-header">
             <div>
-              ${renderAvatar(n.author)}
+              ${renderAvatar(n.author, 'small')}
               ${renderName(n.author)} liked your post
               <span class="timestamp">
                 <span class="bullet">•</span>
