@@ -21,7 +21,9 @@ module.exports = function renderNewPostForm () {
           onblur=${onToggleNewPostForm}
           onkeyup=${onChangePostDraft}>${app.postDraftText}</textarea>
       </div>
+
       <div class="actions ${editingCls}">
+        <span class="char-count">${app.postDraftText.length || ''}</span>
         ${isEditingPost ? yo`<button disabled=${!app.postDraftText.length} class="btn new-post" type="submit">Submit post</button>` : ''}
       </div>
     </form>`
@@ -33,9 +35,7 @@ module.exports = function renderNewPostForm () {
   function onChangePostDraft (e) {
     const oldLen = app.postDraftText.length
     app.postDraftText = e.target.value
-    if (oldLen === 0 || app.postDraftText.length === 0) {
-      rerender()
-    }
+    rerender()
   }
 
   async function onSubmitPost (e) {
