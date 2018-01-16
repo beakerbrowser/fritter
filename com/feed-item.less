@@ -78,7 +78,8 @@
     }
 
     .text {
-      margin-top: 8px;
+      margin-top: -10px;
+      white-space: pre-line;
       line-height: 1.4;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -128,10 +129,11 @@
     }
 
     .text {
-      margin-top: 8px;
+      margin-top: -10px;
       line-height: 1.4;
       text-overflow: ellipsis;
       overflow: hidden;
+      white-space: pre-line;
     }
 
     .like-header {
@@ -189,6 +191,13 @@
 
     .follow-btn {
       margin-left: auto;
+    }
+  }
+
+  &.reply {
+
+    .text {
+      margin-top: 8px;
     }
   }
 }
