@@ -16,7 +16,7 @@ module.exports = function renderProfilePicker () {
         <button type="button" onclick=${onSelectProfile} class="btn">Select profile from Library</button>
 
         <p>
-          <input oninput=${validateProfileUrl} name="profileUrl" type="text" placeholder="Your profile URL"/>
+          <input oninput=${validateProfileUrl} name="profileUrl" type="text" placeholder="Paste profile URL"/>
         </p>
 
         <button id="import-profile-btn" type="submit" class="btn primary" disabled>
