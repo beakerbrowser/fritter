@@ -2,7 +2,8 @@
   margin-bottom: 15px;
 
   form,
-  h2 {
+  h2,
+  p {
     width: 100%;
     padding: 15px;
     background: #fff;
@@ -10,5 +11,32 @@
 
   h2 {
     margin-bottom: 1px;
+  }
+
+  .image-settings-wrap {
+    p {
+      font-style: italic;
+      margin: 0 auto;
+    }
+    form {
+      padding-top: 0;
+    }
+    input {
+      width: initial;
+      height: initial;
+    }
+    label {
+      margin-bottom: 10px;
+      display: inline-block;
+      font-weight: 400;
+    }
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        margin-left: 5px;
+      }
+    }
   }
 }
