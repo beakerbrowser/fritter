@@ -7,6 +7,7 @@ const renderPublicPeerTip = require('../com/public-peer-tip')
 const renderWhoToFollow = require('../com/who-to-follow')
 const renderProfileHeader = require('../com/profile-header')
 const renderNewPostForm = require('../com/new-post-form')
+const renderImageSettings = require('../com/image-settings')
 const renderFeed = require('../com/feed')
 
 // exported api
@@ -17,6 +18,7 @@ module.exports = function () {
     <div class="view feed">
       <div class="sidebar-col">
         ${renderProfileCard(app.viewedProfile || app.currentUserProfile)}
+        ${!app.settings.imageEmbed ? renderImageSettings() : ''}
         ${renderPublicPeerTip()}
         ${renderWhoToFollow()}
         ${renderFooter()}

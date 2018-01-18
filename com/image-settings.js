@@ -18,20 +18,28 @@ module.exports = function renderImageSettings(){
 
       <form class="image-settings" onsubmit=${onUpdateImageSettings}>
 
-        <input ${isCurrentSetting('all') ? 'checked' : ''} type="radio" id="choice-all" name="embedImages" value="all">
-        <label for="choice-all">Embed all images</label><br>
+        <div class="input-wrap">
+          <input ${isCurrentSetting('all') ? 'checked' : ''} type="radio" id="choice-all" name="embedImages" value="all">
+          <label for="choice-all">Embed all images</label>
+        </div>
 
-        <input ${isCurrentSetting('dat') ? 'checked' : ''} type="radio" id="choice-dat" name="embedImages" value="dat">
-        <label for="choice-dat">Embed only images from dat:// sources</label><br>
+        <div class="input-wrap">
+          <input ${isCurrentSetting('dat') ? 'checked' : ''} type="radio" id="choice-dat" name="embedImages" value="dat">
+          <label for="choice-dat">Embed only images from dat:// sources</label>
+        </div>
 
-        <input ${isCurrentSetting('dat-followed') ? 'checked' : ''} type="radio" id="choice-dat-followed" name="embedImages" value="dat-followed">
-        <label for="choice-dat-followed">Embed only images from dat:// sources I follow</label><br>
+        <div class="input-wrap">
+          <input ${isCurrentSetting('dat-followed') ? 'checked' : ''} type="radio" id="choice-dat-followed" name="embedImages" value="dat-followed">
+          <label for="choice-dat-followed">Embed only images from dat:// sources I follow</label>
+        </div>
 
-        <input ${isCurrentSetting('none') ? 'checked' : ''} type="radio" id="choice-none" name="embedImages" value="none">
-        <label for="choice-none">Don't embed images</label><br>
+        <div class="input-wrap">
+          <input ${isCurrentSetting('none') ? 'checked' : ''} type="radio" id="choice-none" name="embedImages" value="none">
+          <label for="choice-none">Don't embed images</label>
+        </div>
 
         <div class="actions">
-          <button type="button" class="btn" onclick=${app.gotoFeed}>Cancel</button>
+          ${app.currentView === 'feed' ? '' : yo`<button type="button" class="btn" onclick=${app.gotoFeed}>Cancel</button>` }
           <button type="submit" class="btn primary">Save</button>
         </div>
       </form>
