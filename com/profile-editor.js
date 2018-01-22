@@ -34,7 +34,6 @@ module.exports = function renderProfileEditor () {
         <textarea name="bio" placeholder="Enter a short bio">${bio}</textarea>
 
         <div class="actions">
-          ${isNew ? '' : yo`<button type="button" class="btn" onclick=${app.gotoFeed}>Cancel</button>`}
           <button type="submit" class="btn primary">${isNew ? 'Create profile' : 'Save'}</button>
         </div>
       </form>

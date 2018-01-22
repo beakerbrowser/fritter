@@ -18,7 +18,6 @@ module.exports = function () {
     <div class="view feed">
       <div class="sidebar-col">
         ${renderProfileCard(app.viewedProfile || app.currentUserProfile)}
-        ${!app.settings.imageEmbed ? renderImageSettings() : ''}
         ${renderPublicPeerTip()}
         ${renderWhoToFollow()}
         ${renderFooter()}

@@ -1,15 +1,45 @@
 .settings-view {
   margin-bottom: 15px;
 
-  form,
-  h2,
-  p {
-    width: 100%;
-    padding: 15px;
-    background: #fff;
-  }
-
   h2 {
     margin-bottom: 1px;
+  }
+  input[type="radio"] {
+    width: 13px;
+    height: 13px;
+    margin-right: 8px;
+
+    position: relative;
+    bottom: 2px;
+  }
+  label {
+    margin-bottom: 10px;
+    display: inline-block;
+    font-weight: 400;
+  }
+
+  > div {
+    > form,
+    > h2,
+    > p {
+      width: 100%;
+      padding: 15px;
+      background: #fff;
+      margin-bottom: 1px;
+    }
+
+    > p {
+      margin: 0;
+    }
+
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      margin-left: 5px;
+    }
   }
 }
