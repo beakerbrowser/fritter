@@ -1,4 +1,4 @@
-/* globals app document FileReader */
+/* globals app document */
 
 const yo = require('yo-yo')
 
