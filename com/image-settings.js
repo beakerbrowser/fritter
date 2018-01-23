@@ -9,7 +9,7 @@ module.exports = function renderImageSettings () {
 
   return yo`
     <div id="image-settings" class="image-settings-wrap">
-      <h2>Image Settings</h2>
+      <h2>Image settings</h2>
 
       <p>Embedding images creates a more seamless timeline, but enables <a href="https://github.com/beakerbrowser/fritter/issues/10">pixel-tracking</a>. Choose the setting that works best for you:</p>
 
