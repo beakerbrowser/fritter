@@ -46,7 +46,14 @@ function renderFeedItem (p) {
           ${p.threadParent ? yo`
             <div class="reply-info" onclick=${e => app.gotoThread(p.threadParent, e)}>
               Replying to
-              <span class="url" >${renderName(p.threadParent.author)}</span>
+              <span class="url" >${renderName(p.threadParent.author) || 'this message'}</span>
+            </div>`
+          : ''}
+
+          ${(!p.threadParent && p._threadParent) ? yo`
+            <div class="reply-info" onclick=${e => app.gotoParent(p, e)}>
+              Replying to
+              <span class="url" >this message</span>
             </div>`
           : ''}
         </div>
