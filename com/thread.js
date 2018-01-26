@@ -40,6 +40,13 @@ module.exports = function renderThread () {
           ${renderFollowButton(viewedPost.author)}
         </div>
 
+        ${(!viewedPost.parent && viewedPost.threadParent) ? yo`
+        <div class="reply-info" onclick=${e => app.gotoParent(viewedPost, e)}>
+          Replying to
+          <span class="url" >this message</span>
+        </div>`
+        : ''}
+
         <div class="text">${linkifyText(viewedPost.text, {cls: 'url', inlineImages: true})}</div>
 
         ${renderPostVotesPreview(viewedPost)}
