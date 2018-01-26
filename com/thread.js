@@ -40,12 +40,19 @@ module.exports = function renderThread () {
           ${renderFollowButton(viewedPost.author)}
         </div>
 
-        ${(!viewedPost.parent && viewedPost.threadParent) ? yo`
-        <div class="reply-info" onclick=${e => app.gotoParent(viewedPost, e)}>
-          Replying to
-          <span class="url" >this message</span>
-        </div>`
-        : ''}
+        ${viewedPost.threadParent
+          ? yo`
+            <div class="reply-info" onclick=${e => app.gotoThread(viewedPost.threadParent, e)}>
+              Replying to
+              <a href=${app.threadUrl(viewedPost.threadParent)} class="url">
+                ${viewedPost.threadParentPost && viewedPost.threadParentPost.author
+                  ? renderName(viewedPost.threadParentPost.author)
+                  : 'this post'
+                }
+              </a>
+            </div>`
+          : ''
+        }
 
         <div class="text">${linkifyText(viewedPost.text, {cls: 'url', inlineImages: true})}</div>
 
