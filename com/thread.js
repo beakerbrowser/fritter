@@ -54,7 +54,7 @@ module.exports = function renderThread () {
           : ''
         }
 
-        <div class="text">${linkifyText(viewedPost.text, {cls: 'url', inlineImages: true})}</div>
+        <div class="text">${linkifyText(viewedPost, {cls: 'url', inlineImages: true})}</div>
 
         ${renderPostVotesPreview(viewedPost)}
 
