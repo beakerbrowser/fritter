@@ -23,7 +23,7 @@ module.exports = function mentionCheck(text) {
   }
 
   // check for a followed name between the @ and the cursor
-  const textToSearch = text.slice(atIndex + 1, cursorPos + 1)
+  const textToSearch = text.slice(atIndex + 1, cursorPos + 1).toLowerCase()
   const matches = allFollowed.filter(user => user.name.toLowerCase().includes(textToSearch))
 
   return matches
