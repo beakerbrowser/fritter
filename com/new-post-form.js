@@ -2,6 +2,9 @@
 
 const yo = require('yo-yo')
 const renderAvatar = require('./avatar')
+const mentionCheck = require('./mention-check.js')
+
+let possibleMentions = null
 
 // exported api
 // =
@@ -34,6 +37,10 @@ module.exports = function renderNewPostForm () {
 
   function onChangePostDraft (e) {
     app.postDraftText = e.target.value
+    possibleMentions = mentionCheck(app.postDraftText)
+
+    // TODO: Conditional render of floating mentions list
+
     rerender()
   }
 

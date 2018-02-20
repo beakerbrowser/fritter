@@ -8,6 +8,9 @@ const renderPostActions = require('./post-actions')
 const renderPostVotesPreview = require('./post-votes-preview')
 const renderReply = require('./post-reply')
 const {linkifyText, timestamp} = require('../lib/util')
+const mentionCheck = require('./mention-check.js')
+
+let possibleMentions = null
 
 // exported api
 // =
@@ -103,6 +106,10 @@ module.exports = function renderThread () {
   function onChangeReplyDraft (e) {
     const oldLen = app.replyDraftText.length
     app.replyDraftText = e.target.value
+    possibleMentions = mentionCheck(app.replyDraftText)
+
+    // TODO: Conditional render of floating mentions list
+
     if (oldLen === 0 || app.replyDraftText.length === 0) {
       app.render()
     }
