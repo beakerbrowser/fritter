@@ -5,7 +5,6 @@ const renderAvatar = require('./avatar')
 const mentionCheck = require('./mention-check')
 const renderMentions = require('./mention-window')
 
-let possibleMentions = null
 let mentionCoordinates = null
 
 // exported api
@@ -26,8 +25,8 @@ module.exports = function renderNewPostForm () {
           onblur=${onToggleNewPostForm}
           onkeyup=${onChangePostDraft}>${app.postDraftText}</textarea>
 
-        ${possibleMentions && possibleMentions.mentions.length
-          ? renderMentions(possibleMentions)
+        ${app.possibleMentions && app.possibleMentions.length && app.isEditingPost
+          ? renderMentions()
           : ''
         }
       </div>
@@ -44,9 +43,13 @@ module.exports = function renderNewPostForm () {
 
   function onChangePostDraft (e) {
     app.postDraftText = e.target.value
-    possibleMentions = mentionCheck(app.postDraftText)
 
-    // TODO: Conditional render of floating mentions list
+    const checkResults = mentionCheck(app.postDraftText)
+
+    app.possibleMentions = checkResults.mentions
+    if (checkResults.coordinates) {
+      app.mentionCoordinates = `${ checkResults.coordinates.x }px, ${ checkResults.coordinates.y }px`
+    }
 
     rerender()
   }

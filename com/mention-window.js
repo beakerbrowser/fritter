@@ -2,20 +2,16 @@
 
 const yo = require('yo-yo')
 let coordinates = '0, 0'
+let selectedIndex = 0
 
 // exported api
 // =
 
-module.exports = function renderMentions(possibleMentions) {
-
-  // update coordinates if necessary
-  if (possibleMentions.coordinates !== false) {
-    coordinates = `${ possibleMentions.coordinates.x }px, ${ possibleMentions.coordinates.y }px`
-  }
+module.exports = function renderMentions() {
 
   return yo`
-    <div class="mention-window" style="transform: translate(${ coordinates })">
-      ${ possibleMentions.mentions.map(mention => renderPossibleMention(mention)) }
+    <div class="mention-window" style="transform: translate(${ app.mentionCoordinates })">
+      ${ app.possibleMentions.map((mention, i) => renderPossibleMention(mention, i)) }
     </div>
   `
 }
@@ -23,8 +19,8 @@ module.exports = function renderMentions(possibleMentions) {
 // internal methods
 // =
 
-function renderPossibleMention(mention) {
+function renderPossibleMention(mention, index) {
   return yo`
-    <button>${ mention.name }</button>
+    <button class="${ index === selectedIndex ? 'selected' : '' }">${ mention.name }</button>
   `
 }
