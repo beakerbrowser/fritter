@@ -21,6 +21,17 @@ module.exports = function renderMentions() {
 
 function renderPossibleMention(mention, index) {
   return yo`
-    <button class="${ index === selectedIndex ? 'selected' : '' }">${ mention.name }</button>
+    <button class="${ index === selectedIndex ? 'selected' : '' }" onmousedown="${ () => addMention(mention) }">
+      ${ mention.name }
+    </button>
   `
+}
+
+function addMention(mention) {
+  // add name to draft
+  app.postDraftText = app.postDraftText.replace(/@[^@]*$/g, `@${ mention.name }`)
+  // add mention to post data
+  // TODO
+  // refocus element
+  setTimeout(() => { document.querySelector('textarea').focus() }, 50)
 }
