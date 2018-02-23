@@ -1,9 +1,10 @@
 /* globals app */
 
+const caretCoordinates = require('textarea-caret')
+let allFollowed
+
 // exported api
 // =
-
-let allFollowed
 
 module.exports = function mentionCheck(text) {
 
@@ -12,7 +13,8 @@ module.exports = function mentionCheck(text) {
     allFollowed = app.currentUserProfile.follows
   }
 
-  const cursorPos = document.activeElement.selectionEnd
+  const activeElement = document.activeElement
+  const cursorPos = activeElement.selectionEnd
 
   // look for an @
   const atIndex = text.indexOf('@')
@@ -22,9 +24,19 @@ module.exports = function mentionCheck(text) {
     return false
   }
 
+  let coordinates = false
+
   // check for a followed name between the @ and the cursor
   const textToSearch = text.slice(atIndex + 1, cursorPos + 1).toLowerCase()
-  const matches = allFollowed.filter(user => user.name.toLowerCase().includes(textToSearch))
 
-  return matches
+  // if we're just starting the mention, add the caret coordinate (calculate bottom left, accounting for scroll)
+  if (textToSearch.length == 0) {
+    const rawCoordinates = caretCoordinates(activeElement, cursorPos)
+    const y = rawCoordinates.top + rawCoordinates.height - activeElement.scrollTop
+    coordinates = { x: rawCoordinates.left, y }
+  }
+
+  const mentions = allFollowed.filter(user => user.name.toLowerCase().includes(textToSearch))
+
+  return { mentions, coordinates }
 }

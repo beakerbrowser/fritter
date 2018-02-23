@@ -2,9 +2,11 @@
 
 const yo = require('yo-yo')
 const renderAvatar = require('./avatar')
-const mentionCheck = require('./mention-check.js')
+const mentionCheck = require('./mention-check')
+const renderMentions = require('./mention-window')
 
 let possibleMentions = null
+let mentionCoordinates = null
 
 // exported api
 // =
@@ -23,6 +25,11 @@ module.exports = function renderNewPostForm () {
           onfocus=${onToggleNewPostForm}
           onblur=${onToggleNewPostForm}
           onkeyup=${onChangePostDraft}>${app.postDraftText}</textarea>
+
+        ${possibleMentions && possibleMentions.mentions.length
+          ? renderMentions(possibleMentions)
+          : ''
+        }
       </div>
 
       <div class="actions ${editingCls}">

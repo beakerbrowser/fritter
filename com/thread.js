@@ -8,7 +8,7 @@ const renderPostActions = require('./post-actions')
 const renderPostVotesPreview = require('./post-votes-preview')
 const renderReply = require('./post-reply')
 const {linkifyText, timestamp} = require('../lib/util')
-const mentionCheck = require('./mention-check.js')
+const mentionCheck = require('./mention-check')
 
 let possibleMentions = null
 
