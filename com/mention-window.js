@@ -31,7 +31,10 @@ function addMention(mention) {
   // add name to draft
   app.postDraftText = app.postDraftText.replace(/@[^@]*$/g, `@${ mention.name }`)
   // add mention to post data
-  // TODO
+  app.draftMentions.push({
+    name: mention.name,
+    url: mention.url
+  })
   // refocus element
   setTimeout(() => { document.querySelector('textarea').focus() }, 50)
 }

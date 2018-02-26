@@ -4,6 +4,7 @@ const yo = require('yo-yo')
 const renderAvatar = require('./avatar')
 const mentionCheck = require('./mention-check')
 const renderMentions = require('./mention-window')
+const { buildNewPost } = require('../lib/util')
 
 let mentionCoordinates = null
 
@@ -56,7 +57,7 @@ module.exports = function renderNewPostForm () {
 
   async function onSubmitPost (e) {
     e.preventDefault()
-    await app.libfritter.feed.post(app.currentUser, {text: app.postDraftText})
+    await app.libfritter.feed.post(app.currentUser, buildNewPost({ text: app.postDraftText }))
     app.postDraftText = ''
     app.posts = await app.loadFeedPosts()
     app.render()
