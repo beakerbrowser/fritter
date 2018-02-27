@@ -14,13 +14,13 @@ module.exports = function mentionCheck(text) {
   }
 
   const activeElement = document.activeElement
-  const cursorPos = activeElement.selectionEnd
+  const cursorPos = activeElement.selectionStart
 
-  // look for an @
-  const atIndex = text.indexOf('@')
+  // look for the last @ before the cursor
+  const atIndex = text.slice(0, cursorPos).lastIndexOf('@')
 
-  // cancel if there's no @ or we're in front of it
-  if (atIndex == -1 || atIndex >= cursorPos) {
+  // cancel if there's no @
+  if (atIndex == -1) {
     return false
   }
 
