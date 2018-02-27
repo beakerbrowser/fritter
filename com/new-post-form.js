@@ -4,9 +4,13 @@ const yo = require('yo-yo')
 const renderAvatar = require('./avatar')
 const mentionCheck = require('./mention-check')
 const renderMentions = require('./mention-window')
-const { buildNewPost } = require('../lib/util')
+const { buildNewPost, addMention } = require('../lib/util')
 
 let mentionCoordinates = null
+const ARROW_UP = 38
+const ARROW_DOWN = 40
+const ENTER_KEY = 13
+const ESC_KEY = 27
 
 // exported api
 // =
@@ -24,7 +28,8 @@ module.exports = function renderNewPostForm () {
           style="border-color: ${app.getAppColor('border')}; height: ${isEditingPost ? '60px' : '35px'};"
           onfocus=${onToggleNewPostForm}
           onblur=${onToggleNewPostForm}
-          onkeyup=${onChangePostDraft}>${app.postDraftText}</textarea>
+          onkeyup=${onChangePostDraft}
+          onkeydown=${onDraftKeyDown}>${app.postDraftText}</textarea>
 
         ${app.possibleMentions && app.possibleMentions.length && app.isEditingPost
           ? renderMentions()
@@ -53,6 +58,51 @@ module.exports = function renderNewPostForm () {
     }
 
     rerender()
+  }
+
+  // Separate function to handle arrow keys, enter key, etc. and prevent default
+  function onDraftKeyDown (e) {
+    // if we have mentions available...
+    if (app.possibleMentions && app.possibleMentions.length){
+
+      let dirty = false
+
+      // if we're past the length of the current mention list, move to the last mention
+      // (ie if the length of the list just changed)
+      if (app.selectedMention >= app.possibleMentions.length) {
+        app.selectedMention = Math.max(app.possibleMentions.length - 1, 0)
+        dirty = true
+      }
+
+      // if we hit an up or down arrow and mentions are open, change the selected mention
+      if (app.possibleMentions.length && (e.keyCode == ARROW_UP || e.keyCode == ARROW_DOWN)) {
+        e.preventDefault()
+
+        app.selectedMention += (e.keyCode == ARROW_UP ? -1 : 1)
+
+        // jump to the end of the list
+        if (app.selectedMention < 0){
+          app.selectedMention = app.possibleMentions.length - 1
+        } else if (app.selectedMention >= app.possibleMentions.length) {
+          // loop to the start of the list
+          app.selectedMention = 0
+        }
+
+        dirty = true
+      }
+
+      // if we hit "enter" and the mentions are open, click the selected mention
+      if (e.keyCode == ENTER_KEY) {
+        e.preventDefault()
+        addMention(app.possibleMentions[app.selectedMention])
+        dirty = true
+      }
+
+      // only rerender if we need to
+      if (dirty) {
+        rerender()
+      }
+    }
   }
 
   async function onSubmitPost (e) {
