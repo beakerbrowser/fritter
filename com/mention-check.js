@@ -27,7 +27,7 @@ module.exports = function mentionCheck(text) {
   let coordinates = false
 
   // check for a followed name between the @ and the cursor
-  const textToSearch = text.slice(atIndex + 1, cursorPos + 1).toLowerCase()
+  const textToSearch = text.slice(atIndex + 1, cursorPos).toLowerCase()
 
   // if we're just starting the mention, add the caret coordinate (calculate bottom left, accounting for scroll)
   if (textToSearch.length == 0) {
