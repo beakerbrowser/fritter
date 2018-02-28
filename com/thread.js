@@ -8,9 +8,15 @@ const renderPostActions = require('./post-actions')
 const renderPostVotesPreview = require('./post-votes-preview')
 const renderReply = require('./post-reply')
 const {linkifyText, timestamp} = require('../lib/util')
-const mentionCheck = require('./mention-check')
 
-let possibleMentions = null
+const mentionCheck = require('./mention-check')
+const renderMentions = require('./mention-window')
+const {buildNewPost, addMention} = require('../lib/util')
+
+const ARROW_UP = 38
+const ARROW_DOWN = 40
+const ENTER_KEY = 13
+const ESC_KEY = 27
 
 // exported api
 // =
@@ -64,30 +70,96 @@ module.exports = function renderThread () {
         ${renderPostActions(viewedPost)}
       </div>
 
-      <form class="reply-form ${editingCls}" onsubmit=${onSubmitReply}>
-        ${renderAvatar(app.currentUserProfile)}
-        <textarea
-          placeholder="Write a reply"
-          style="border-color: ${app.getAppColor('border')}"
-          onfocus=${onToggleIsReplying}
-          onblur=${onToggleIsReplying}
-          onkeyup=${onChangeReplyDraft}>${app.replyDraftText}</textarea>
-        <div class="actions ${editingCls}">
-          ${app.isEditingReply ? yo`<button disabled=${!app.replyDraftText} class="btn new-reply" type="submit">Reply</button>` : ''}
-        </div>
-      </form>
+      ${renderReplyForm()}
 
       ${renderReplies(viewedPost)}
     </div>
   `
 
+  function renderReplyForm () {
+    return yo`
+      <form class="reply-form ${editingCls}" onsubmit=${onSubmitReply}>
+        <div class="inputs">
+          ${renderAvatar(app.currentUserProfile)}
+          <textarea
+            placeholder="Write a reply"
+            style="border-color: ${app.getAppColor('border')}"
+            onfocus=${onToggleIsReplying}
+            onblur=${onToggleIsReplying}
+            onkeyup=${onChangeReplyDraft}
+            onkeydown=${onReplyKeyDown}>${app.replyDraftText}</textarea>
+
+          ${app.possibleMentions && app.possibleMentions.length && app.isEditingReply
+            ? renderMentions()
+            : ''
+          }
+        </div>
+
+        <div class="actions ${editingCls}">
+          ${app.isEditingReply ? yo`<button disabled=${!app.replyDraftText} class="btn new-reply" type="submit">Reply</button>` : ''}
+        </div>
+      </form>
+    `
+  }
+
+  // Separate function to handle arrow keys, enter key, etc. and prevent default
+  function onReplyKeyDown (e) {
+    // if we have mentions available...
+    if (app.possibleMentions && app.possibleMentions.length){
+
+      let dirty = false
+
+      // if we're past the length of the current mention list, move to the last mention
+      // (ie if the length of the list just changed)
+      if (app.selectedMention >= app.possibleMentions.length) {
+        app.selectedMention = Math.max(app.possibleMentions.length - 1, 0)
+        dirty = true
+      }
+
+      // if we hit an up or down arrow and mentions are open, change the selected mention
+      if (app.possibleMentions.length && (e.keyCode == ARROW_UP || e.keyCode == ARROW_DOWN)) {
+        e.preventDefault()
+
+        app.selectedMention += (e.keyCode == ARROW_UP ? -1 : 1)
+
+        // jump to the end of the list
+        if (app.selectedMention < 0){
+          app.selectedMention = app.possibleMentions.length - 1
+        } else if (app.selectedMention >= app.possibleMentions.length) {
+          // loop to the start of the list
+          app.selectedMention = 0
+        }
+
+        dirty = true
+      }
+
+      // if we hit "enter" and the mentions are open, click the selected mention
+      if (e.keyCode == ENTER_KEY) {
+        e.preventDefault()
+        addMention(app.possibleMentions[app.selectedMention], 'replyDraftText')
+        dirty = true
+      }
+
+      // only rerender if we need to
+      if (dirty) {
+        rerender()
+      }
+    }
+  }
+
+  function rerender () {
+    yo.update(document.querySelector('.reply-form'), renderReplyForm())
+  }
+
   async function onSubmitReply (e) {
     e.preventDefault()
-    await app.libfritter.feed.post(app.currentUser, {
-      text: app.replyDraftText,
-      threadRoot: app.viewedPost.threadRoot || app.viewedPost.getRecordURL(),
-      threadParent: app.viewedPost.getRecordURL()
-    })
+    await app.libfritter.feed.post(app.currentUser,
+      buildNewPost({
+        text: app.replyDraftText,
+        threadRoot: app.viewedPost.threadRoot || app.viewedPost.getRecordURL(),
+        threadParent: app.viewedPost.getRecordURL()
+      })
+    )
     app.replyDraftText = ''
     app.isEditingReply = false
 
@@ -108,11 +180,17 @@ module.exports = function renderThread () {
     app.replyDraftText = e.target.value
     possibleMentions = mentionCheck(app.replyDraftText)
 
-    // TODO: Conditional render of floating mentions list
+    const checkResults = mentionCheck(app.replyDraftText)
 
-    if (oldLen === 0 || app.replyDraftText.length === 0) {
-      app.render()
+    app.possibleMentions = checkResults.mentions
+    if (checkResults.coordinates) {
+      app.mentionCoordinates = `${ checkResults.coordinates.x }px, ${ checkResults.coordinates.y }px`
     }
+
+
+    //if (oldLen === 0 || app.replyDraftText.length === 0) {
+      app.render()
+    //}
   }
 }
 

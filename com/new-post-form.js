@@ -4,9 +4,8 @@ const yo = require('yo-yo')
 const renderAvatar = require('./avatar')
 const mentionCheck = require('./mention-check')
 const renderMentions = require('./mention-window')
-const { buildNewPost, addMention } = require('../lib/util')
+const {buildNewPost, addMention} = require('../lib/util')
 
-let mentionCoordinates = null
 const ARROW_UP = 38
 const ARROW_DOWN = 40
 const ENTER_KEY = 13
