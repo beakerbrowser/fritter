@@ -1,17 +1,25 @@
 .view.feed {
 
+  .view-content {
+    position: relative;
+    z-index: 5;
+  }
+
   .reply-form,
   .new-post-form {
     background: var(--theme-color-faded);
     padding: 15px;
-  }
-
-  .new-post-form {
 
     .inputs {
       display: flex;
       flex-wrap: nowrap;
+      position: relative;
+
+      flex: 1;
     }
+  }
+
+  .new-post-form {
 
     .char-count {
       margin-right: 5px;

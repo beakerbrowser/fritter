@@ -59,7 +59,7 @@ function renderFeedItem (p) {
         </div>
 
         <p class="text">
-          ${linkifyText(p.text, {cls: 'url', inlineImages: true})}
+          ${linkifyText(p, {cls: 'url', inlineImages: true})}
         </p>
       </div>
 
