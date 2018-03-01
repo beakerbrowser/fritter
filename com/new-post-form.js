@@ -14,11 +14,11 @@ const ESC_KEY = 27
 // exported api
 // =
 
-module.exports = function renderNewPostForm () {
+module.exports = function renderNewPostForm (onSubmit = null) {
   const isEditingPost = app.isEditingPost || app.postDraftText.length
   var editingCls = isEditingPost ? 'editing' : ''
   return yo`
-    <form class="new-post-form ${editingCls}" onsubmit=${onSubmitPost}>
+    <form class="new-post-form ${editingCls}" onsubmit=${onSubmit || onSubmitPost}>
       <div class="inputs">
         ${renderAvatar(app.currentUserProfile, 'small')}
 
@@ -42,8 +42,8 @@ module.exports = function renderNewPostForm () {
       </div>
     </form>`
 
-  function rerender () {
-    yo.update(document.querySelector('.new-post-form'), renderNewPostForm())
+  function rerender (submitCallback) {
+    yo.update(document.querySelector('.new-post-form'), renderNewPostForm(submitCallback))
   }
 
   function onChangePostDraft (e) {
@@ -56,7 +56,7 @@ module.exports = function renderNewPostForm () {
       app.mentionCoordinates = `${ checkResults.coordinates.x }px, ${ checkResults.coordinates.y }px`
     }
 
-    rerender()
+    rerender(onSubmit)
   }
 
   // Separate function to handle arrow keys, enter key, etc. and prevent default
@@ -99,7 +99,7 @@ module.exports = function renderNewPostForm () {
 
       // only rerender if we need to
       if (dirty) {
-        rerender()
+        rerender(onSubmit)
       }
     }
   }
@@ -114,6 +114,6 @@ module.exports = function renderNewPostForm () {
 
   async function onToggleNewPostForm () {
     app.isEditingPost = !app.isEditingPost
-    rerender()
+    rerender(onSubmit)
   }
 }
