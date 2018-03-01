@@ -90,7 +90,6 @@ function renderNotification (n) {
     `
   }
   if (n.type === 'mention') {
-    console.log(n)
     let p = n.post
     return yo`
       <div class="feed-item post ${unreadCls}" onclick=${e => app.gotoThread(p, e)}>

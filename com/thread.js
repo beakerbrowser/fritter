@@ -12,11 +12,6 @@ const {linkifyText, timestamp} = require('../lib/util')
 const renderReplyForm = require('./new-post-form')
 const {buildNewPost} = require('../lib/util')
 
-const ARROW_UP = 38
-const ARROW_DOWN = 40
-const ENTER_KEY = 13
-const ESC_KEY = 27
-
 // exported api
 // =
 

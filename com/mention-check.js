@@ -6,7 +6,7 @@ let allFollowed
 // exported api
 // =
 
-module.exports = function mentionCheck(text) {
+module.exports = function mentionCheck (text) {
 
   // save our list of followed users if we haven't yet
   if (!allFollowed) {

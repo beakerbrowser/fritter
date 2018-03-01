@@ -12,7 +12,7 @@ module.exports = renderMentions
 // internal methods
 // =
 
-function renderMentions() {
+function renderMentions () {
 
   return yo`
     <div class="mention-window" style="transform: translate(${ app.mentionCoordinates })">
@@ -21,7 +21,7 @@ function renderMentions() {
   `
 }
 
-function renderPossibleMention(mention, index) {
+function renderPossibleMention (mention, index) {
   return yo`
     <button
       class="${ index === app.selectedMention ? 'selected' : '' }"
@@ -32,7 +32,7 @@ function renderPossibleMention(mention, index) {
   `
 }
 
-function setSelection(index) {
+function setSelection (index) {
   app.selectedMention = index
   yo.update(document.querySelector('.mention-window'), renderMentions())
 }
