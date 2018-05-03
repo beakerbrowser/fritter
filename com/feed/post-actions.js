@@ -23,8 +23,8 @@ module.exports = function renderPostActions (p) {
         : ''}
       </div>
 
-      <div class="action vote ${currentUserUpvoted ? 'voted' : ''}">
-        <span onclick=${e => onToggleLiked(e, p)} class="vote-icon ${currentUserUpvoted ? 'voted' : ''}">
+      <div class="action vote ${currentUserUpvoted ? 'voted' : ''}" onclick=${onToggleLiked}>
+        <span class="vote-icon ${currentUserUpvoted ? 'voted' : ''}">
           ${renderHeartIcon()}
         </span>
 
@@ -37,6 +37,17 @@ module.exports = function renderPostActions (p) {
 
   async function onToggleLiked (e) {
     e.stopPropagation()
-    app.toggleLiked(p)
+    var isLiked = await app.toggleLiked(p)
+    if (isLiked) {
+      var el = Array.from(e.path).find(el => el.classList.contains('action'))
+      var icon = el.querySelector('.vote-icon')
+      el.classList.add('voted')
+      icon.classList.add('vote-animation')
+      setTimeout(() => {
+        app.render()
+      }, 250)
+    } else {
+      app.render()
+    }
   }
 }
