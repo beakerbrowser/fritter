@@ -1,7 +1,7 @@
 /* globals app document FileReader */
 
 const yo = require('yo-yo')
-const cropPopup = require('./crop-popup')
+const cropPopup = require('../crop-popup')
 
 // exported api
 // =

@@ -1,9 +1,9 @@
 /* globals app */
 
 const yo = require('yo-yo')
-const renderProfileCard = require('../com/profile-card')
-const renderFooter = require('../com/footer')
-const renderProfileListingItem = require('../com/profile-listing-item')
+const renderProfileCard = require('../com/profile/profile-card')
+const renderFooter = require('../com/layout/footer')
+const renderProfileListingItem = require('../com/profile/profile-listing-item')
 
 // exported api
 // =

@@ -1,7 +1,7 @@
 /* globals app */
 
 const yo = require('yo-yo')
-const renderAvatar = require('./avatar')
+const renderAvatar = require('../avatar')
 
 // exported api
 // =

@@ -1,10 +1,10 @@
 /* globals app */
 
 const yo = require('yo-yo')
-const renderHomeIcon = require('../com/icons/home')
-const renderErrorIcon = require('../com/icons/error')
-const renderSettingsIcon = require('../com/icons/settings')
-const renderAvatar = require('../com/avatar')
+const renderHomeIcon = require('../icons/home')
+const renderErrorIcon = require('../icons/error')
+const renderSettingsIcon = require('../icons/settings')
+const renderAvatar = require('../avatar')
 
 // exported api
 

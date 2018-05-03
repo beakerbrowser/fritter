@@ -3,7 +3,7 @@
 const yo = require('yo-yo')
 const renderAvatar = require('./avatar')
 const renderName = require('./name')
-const renderPostActions = require('./post-actions')
+const renderPostActions = require('./feed/post-actions')
 const renderHeartIcon = require('./icons/heart')
 const {timestamp, linkifyText} = require('../lib/util')
 

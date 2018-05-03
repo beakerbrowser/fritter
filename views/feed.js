@@ -1,14 +1,14 @@
 /* globals app */
 
 const yo = require('yo-yo')
-const renderProfileCard = require('../com/profile-card')
-const renderFooter = require('../com/footer')
+const renderProfileCard = require('../com/profile/profile-card')
+const renderFooter = require('../com/layout/footer')
 const renderPublicPeerTip = require('../com/public-peer-tip')
 const renderWhoToFollow = require('../com/who-to-follow')
-const renderProfileHeader = require('../com/profile-header')
-const renderNewPostForm = require('../com/new-post-form')
+const renderProfileHeader = require('../com/profile/profile-header')
+const renderNewPostForm = require('../com/feed/new-post-form')
 const renderImageSettings = require('../com/image-settings')
-const renderFeed = require('../com/feed')
+const renderFeed = require('../com/feed/feed')
 
 // exported api
 // =

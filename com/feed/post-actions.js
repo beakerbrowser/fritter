@@ -1,8 +1,8 @@
 /* globals app */
 
 const yo = require('yo-yo')
-const renderRepliesIcon = require('./icons/replies')
-const renderHeartIcon = require('./icons/heart')
+const renderRepliesIcon = require('../icons/replies')
+const renderHeartIcon = require('../icons/heart')
 
 // exported api
 // =

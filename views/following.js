@@ -1,10 +1,10 @@
 /* globals app */
 
 const yo = require('yo-yo')
-const renderProfileCard = require('../com/profile-card')
-const renderFooter = require('../com/footer')
-const renderProfileHeader = require('../com/profile-header')
-const renderProfileListingItem = require('../com/profile-listing-item')
+const renderProfileCard = require('../com/profile/profile-card')
+const renderFooter = require('../com/layout/footer')
+const renderProfileHeader = require('../com/profile/profile-header')
+const renderProfileListingItem = require('../com/profile/profile-listing-item')
 
 // exported api
 // =

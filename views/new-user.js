@@ -1,8 +1,8 @@
 /* globals */
 
 const yo = require('yo-yo')
-const renderProfileEditor = require('../com/profile-editor')
-const renderProfilePicker = require('../com/profile-picker')
+const renderProfileEditor = require('../com/profile/profile-editor')
+const renderProfilePicker = require('../com/profile/profile-picker')
 
 // exported api
 // =

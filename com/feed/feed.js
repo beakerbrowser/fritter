@@ -1,10 +1,10 @@
 /* globals app */
 
 const yo = require('yo-yo')
-const renderAvatar = require('./avatar')
-const renderName = require('./name')
-const renderPostActions = require('./post-actions')
-const {linkifyText, timestamp} = require('../lib/util')
+const renderAvatar = require('../avatar')
+const renderName = require('../name')
+const renderPostActions = require('../feed/post-actions')
+const {linkifyText, timestamp} = require('../../lib/util')
 
 // exported api
 // =

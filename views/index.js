@@ -1,7 +1,7 @@
 /* globals app document */
 
 const yo = require('yo-yo')
-const renderHeader = require('../com/header')
+const renderHeader = require('../com/layout/header')
 const renderFeed = require('./feed')
 const renderFriends = require('./friends')
 const renderFollowing = require('./following')

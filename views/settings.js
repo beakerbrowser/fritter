@@ -1,10 +1,10 @@
 /* globals app */
 
 const yo = require('yo-yo')
-const renderProfileCard = require('../com/profile-card')
-const renderFooter = require('../com/footer')
-const renderProfileEditor = require('../com/profile-editor')
-const renderProfilePicker = require('../com/profile-picker')
+const renderProfileCard = require('../com/profile/profile-card')
+const renderFooter = require('../com/layout/footer')
+const renderProfileEditor = require('../com/profile/profile-editor')
+const renderProfilePicker = require('../com/profile/profile-picker')
 const renderThemeColorPicker = require('../com/theme-color-picker')
 const renderImageSettings = require('../com/image-settings')
 
