@@ -8,6 +8,7 @@ const {buildNewPost, addMention, checkForMentions} = require('../../lib/posts')
 const ARROW_UP = 38
 const ARROW_DOWN = 40
 const ENTER_KEY = 13
+const TAB_KEY = 9
 
 // exported api
 // =
@@ -87,8 +88,8 @@ module.exports = function renderNewPostForm (onSubmit = null) {
         dirty = true
       }
 
-      // if we hit "enter" and the mentions are open, click the selected mention
-      if (e.keyCode === ENTER_KEY) {
+      // if we hit "enter" or "tab" and the mentions are open, click the selected mention
+      if (e.keyCode === ENTER_KEY || e.keyCode === TAB_KEY) {
         e.preventDefault()
         addMention(app.possibleMentions[app.selectedMention])
         dirty = true
