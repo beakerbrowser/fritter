@@ -4,7 +4,8 @@ const yo = require('yo-yo')
 const renderAvatar = require('../avatar')
 const renderName = require('../name')
 const renderPostActions = require('../feed/post-actions')
-const {linkifyText, timestamp} = require('../../lib/util')
+const {timestamp} = require('../../lib/util')
+const {linkifyText} = require('../../lib/posts')
 
 // exported api
 // =
@@ -59,7 +60,7 @@ function renderFeedItem (p) {
         </div>
 
         <p class="text">
-          ${linkifyText(p.text, {cls: 'url', inlineImages: true})}
+          ${linkifyText(p, {cls: 'url', inlineImages: true})}
         </p>
       </div>
 

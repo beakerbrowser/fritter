@@ -9,6 +9,8 @@
     "build:js-prod": "browserify index.js | uglifyjs -c > assets/index.js",
     "build": "npm run build:js && npm run build:css",
     "build-prod": "npm run build:js-prod && npm run build:css",
+    "watch-build": "npm run build",
+    "lint": "standard ./com/*.js ./com/*/*.js ./views/*.js --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,13 +28,14 @@
   },
   "homepage": "https://github.com/beakerbrowser/fritter#readme",
   "dependencies": {
-    "@beaker/libfritter": "^2.1.3",
+    "@beaker/libfritter": "^2.2.0",
     "nanorouter": "^2.2.0",
+    "textarea-caret": "^3.1.0",
     "yo-yo": "^1.4.1"
   },
   "devDependencies": {
     "browserify": "^14.5.0",
     "less": "^2.7.3",
-    "uglify-es": "^3.3.5"
+    "uglify-es": "^3.3.10"
   }
 }

@@ -6,7 +6,6 @@ const yo = require('yo-yo')
 // =
 
 module.exports = function renderImageSettings () {
-
   return yo`
     <div id="image-settings" class="image-settings-wrap">
       <h2>Image settings</h2>

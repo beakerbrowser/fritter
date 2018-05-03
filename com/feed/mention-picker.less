@@ -1,0 +1,23 @@
+.mention-picker {
+  position: absolute;
+  top: 0;
+  left: 42px;
+  background-color: #fff;
+  border: 1px solid var(--theme-color-border);
+  border-radius: 4px;
+  z-index: 5;
+  font-size: 13px;
+  min-width: 130px;
+  overflow: hidden;
+
+  button {
+    display: block;
+    padding: 5px 10px;
+    width: 100%;
+    text-align: left;
+  }
+  button.selected {
+    background-color: var(--theme-color-border);
+    font-weight: 500;
+  }
+}

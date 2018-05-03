@@ -5,7 +5,7 @@ const renderAvatar = require('../avatar')
 const renderName = require('../name')
 const renderPostActions = require('./post-actions')
 const {timestamp} = require('../../lib/util')
-const {linkifyText} = require('../../lib/util')
+const {linkifyText} = require('../../lib/posts')
 
 // exported api
 // =
@@ -28,7 +28,7 @@ module.exports = function renderReply (r) {
           </span>
         </div>
 
-        <p class="text">${linkifyText(r.text, {cls: 'url', inlineImages: true})}</p>
+        <p class="text">${linkifyText(r, {cls: 'url', inlineImages: true})}</p>
       </div>
 
       ${renderPostActions(r)}
