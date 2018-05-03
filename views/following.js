@@ -14,7 +14,7 @@ module.exports = function renderFollowing () {
   return yo`
     <div class="view following">
       <div class="sidebar-col">
-        ${renderProfileCard(app.viewedProfile)}
+        ${renderProfileCard()}
         ${renderFooter()}
       </div>
 

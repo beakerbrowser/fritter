@@ -16,7 +16,7 @@ module.exports = function () {
   return yo`
     <div class="view feed">
       <div class="sidebar-col">
-        ${renderProfileCard(app.viewedProfile || app.currentUserProfile)}
+        ${renderProfileCard()}
         ${renderPublicPeerTip()}
         ${renderWhoToFollow()}
         ${renderFooter()}
