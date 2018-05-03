@@ -28,7 +28,7 @@ module.exports = function renderReply (r) {
           </span>
         </div>
 
-        <p class="text">${linkifyText(r.text, {cls: 'url', inlineImages: true})}</p>
+        <p class="text">${linkifyText(r, {cls: 'url', inlineImages: true})}</p>
       </div>
 
       ${renderPostActions(r)}

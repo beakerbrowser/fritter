@@ -89,5 +89,35 @@ function renderNotification (n) {
       </div>
     `
   }
+  if (n.type === 'mention') {
+    let p = n.post
+    return yo`
+      <div class="feed-item post ${unreadCls}" onclick=${e => app.gotoThread(p, e)}>
+        ${renderAvatar(p.author)}
+        <div class="post-content">
+          <div class="post-header">
+            <div>
+              ${renderName(p.author)}
+              <span class="timestamp">
+                <span class="bullet">•</span>
+                <a href=${app.threadUrl(p)} class="value">${timestamp(p.createdAt)}</a>
+              </span>
+            </div>
+
+            ${p.threadParent ? yo`
+              <div class="reply-info" onclick=${e => app.gotoThread(p.threadParent, e)}>
+                Replying to
+                <span class="url" >your post</span>
+              </div>`
+            : ''}
+          </div>
+
+          <p class="text">${linkifyText(p.text, {cls: 'url', inlineImages: true})}</p>
+        </div>
+
+        ${renderPostActions(p)}
+      </div>
+    `
+  }
   return ''
 }

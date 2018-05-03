@@ -9,6 +9,9 @@ const renderPostVotesPreview = require('./post-votes-preview')
 const renderReply = require('./post-reply')
 const {linkifyText, timestamp} = require('../../lib/util')
 
+const renderReplyForm = require('./new-post-form')
+const {buildNewPost} = require('../lib/util')
+
 // exported api
 // =
 
@@ -54,25 +57,14 @@ module.exports = function renderThread () {
           : ''
         }
 
-        <div class="text">${linkifyText(viewedPost.text, {cls: 'url', inlineImages: true})}</div>
+        <div class="text">${linkifyText(viewedPost, {cls: 'url', inlineImages: true})}</div>
 
         ${renderPostVotesPreview(viewedPost)}
 
         ${renderPostActions(viewedPost)}
       </div>
 
-      <form class="reply-form ${editingCls}" onsubmit=${onSubmitReply}>
-        ${renderAvatar(app.currentUserProfile)}
-        <textarea
-          placeholder="Write a reply"
-          style="border-color: ${app.getAppColor('border')}"
-          onfocus=${onToggleIsReplying}
-          onblur=${onToggleIsReplying}
-          onkeyup=${onChangeReplyDraft}>${app.replyDraftText}</textarea>
-        <div class="actions ${editingCls}">
-          ${app.isEditingReply ? yo`<button disabled=${!app.replyDraftText} class="btn new-reply" type="submit">Reply</button>` : ''}
-        </div>
-      </form>
+      ${renderReplyForm(onSubmitReply)}
 
       ${renderReplies(viewedPost)}
     </div>
@@ -80,33 +72,21 @@ module.exports = function renderThread () {
 
   async function onSubmitReply (e) {
     e.preventDefault()
-    await app.libfritter.feed.post(app.currentUser, {
-      text: app.replyDraftText,
-      threadRoot: app.viewedPost.threadRoot || app.viewedPost.getRecordURL(),
-      threadParent: app.viewedPost.getRecordURL()
-    })
-    app.replyDraftText = ''
-    app.isEditingReply = false
+    await app.libfritter.feed.post(app.currentUser,
+      buildNewPost({
+        text: app.postDraftText,
+        threadRoot: app.viewedPost.threadRoot || app.viewedPost.getRecordURL(),
+        threadParent: app.viewedPost.getRecordURL()
+      })
+    )
+    app.postDraftText = ''
+    app.isEditingPost = false
 
     // reload the post
     app.viewedPost = await app.libfritter.feed.getThread(app.viewedPost.getRecordURL())
     app.render()
   }
 
-  function onToggleIsReplying () {
-    if (!app.replyDraftText) {
-      app.isEditingReply = !app.isEditingReply
-      app.render()
-    }
-  }
-
-  function onChangeReplyDraft (e) {
-    const oldLen = app.replyDraftText.length
-    app.replyDraftText = e.target.value
-    if (oldLen === 0 || app.replyDraftText.length === 0) {
-      app.render()
-    }
-  }
 }
 
 // internal methods
