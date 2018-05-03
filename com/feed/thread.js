@@ -7,10 +7,9 @@ const renderFollowButton = require('../follow-btn')
 const renderPostActions = require('./post-actions')
 const renderPostVotesPreview = require('./post-votes-preview')
 const renderReply = require('./post-reply')
-const {linkifyText, timestamp} = require('../../lib/util')
-
 const renderReplyForm = require('./new-post-form')
-const {buildNewPost} = require('../lib/util')
+const {timestamp} = require('../../lib/util')
+const {buildNewPost, linkifyText} = require('../../lib/posts')
 
 // exported api
 // =
@@ -19,7 +18,6 @@ module.exports = function renderThread () {
   const viewedPost = app.viewedPost
   if (!viewedPost) return ''
 
-  const editingCls = app.isEditingReply ? 'editing' : ''
   return yo`
     <div class="thread">
       ${viewedPost.parent ? yo`
@@ -86,7 +84,6 @@ module.exports = function renderThread () {
     app.viewedPost = await app.libfritter.feed.getThread(app.viewedPost.getRecordURL())
     app.render()
   }
-
 }
 
 // internal methods

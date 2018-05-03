@@ -10,6 +10,7 @@
     "build": "npm run build:js && npm run build:css",
     "build-prod": "npm run build:js-prod && npm run build:css",
     "watch-build": "npm run build",
+    "lint": "standard ./com/*.js ./com/*/*.js ./views/*.js --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

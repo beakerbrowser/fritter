@@ -4,7 +4,8 @@ const yo = require('yo-yo')
 const renderAvatar = require('../avatar')
 const renderName = require('../name')
 const renderPostActions = require('../feed/post-actions')
-const {linkifyText, timestamp} = require('../../lib/util')
+const {timestamp} = require('../../lib/util')
+const {linkifyText} = require('../../lib/posts')
 
 // exported api
 // =

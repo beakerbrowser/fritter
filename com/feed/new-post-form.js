@@ -2,14 +2,12 @@
 
 const yo = require('yo-yo')
 const renderAvatar = require('../avatar')
-const mentionCheck = require('./mention-check')
 const renderMentions = require('./mention-window')
-const {buildNewPost, addMention} = require('../lib/util')
+const {buildNewPost, addMention, checkForMentions} = require('../../lib/posts')
 
 const ARROW_UP = 38
 const ARROW_DOWN = 40
 const ENTER_KEY = 13
-const ESC_KEY = 27
 
 // exported api
 // =
@@ -49,11 +47,11 @@ module.exports = function renderNewPostForm (onSubmit = null) {
   function onChangePostDraft (e) {
     app.postDraftText = e.target.value
 
-    const checkResults = mentionCheck(app.postDraftText)
+    const checkResults = checkForMentions(app.postDraftText)
 
     app.possibleMentions = checkResults.mentions
     if (checkResults.coordinates) {
-      app.mentionCoordinates = `${ checkResults.coordinates.x }px, ${ checkResults.coordinates.y }px`
+      app.mentionCoordinates = `${checkResults.coordinates.x}px, ${checkResults.coordinates.y}px`
     }
 
     rerender(onSubmit)
@@ -62,8 +60,7 @@ module.exports = function renderNewPostForm (onSubmit = null) {
   // Separate function to handle arrow keys, enter key, etc. and prevent default
   function onDraftKeyDown (e) {
     // if we have mentions available...
-    if (app.possibleMentions && app.possibleMentions.length){
-
+    if (app.possibleMentions && app.possibleMentions.length) {
       let dirty = false
 
       // if we're past the length of the current mention list, move to the last mention
@@ -74,13 +71,13 @@ module.exports = function renderNewPostForm (onSubmit = null) {
       }
 
       // if we hit an up or down arrow and mentions are open, change the selected mention
-      if (app.possibleMentions.length && (e.keyCode == ARROW_UP || e.keyCode == ARROW_DOWN)) {
+      if (app.possibleMentions.length && (e.keyCode === ARROW_UP || e.keyCode === ARROW_DOWN)) {
         e.preventDefault()
 
-        app.selectedMention += (e.keyCode == ARROW_UP ? -1 : 1)
+        app.selectedMention += (e.keyCode === ARROW_UP ? -1 : 1)
 
         // jump to the end of the list
-        if (app.selectedMention < 0){
+        if (app.selectedMention < 0) {
           app.selectedMention = app.possibleMentions.length - 1
         } else if (app.selectedMention >= app.possibleMentions.length) {
           // loop to the start of the list
@@ -91,7 +88,7 @@ module.exports = function renderNewPostForm (onSubmit = null) {
       }
 
       // if we hit "enter" and the mentions are open, click the selected mention
-      if (e.keyCode == ENTER_KEY) {
+      if (e.keyCode === ENTER_KEY) {
         e.preventDefault()
         addMention(app.possibleMentions[app.selectedMention])
         dirty = true

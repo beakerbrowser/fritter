@@ -7,7 +7,6 @@ const renderPublicPeerTip = require('../com/public-peer-tip')
 const renderWhoToFollow = require('../com/who-to-follow')
 const renderProfileHeader = require('../com/profile/profile-header')
 const renderNewPostForm = require('../com/feed/new-post-form')
-const renderImageSettings = require('../com/image-settings')
 const renderFeed = require('../com/feed/feed')
 
 // exported api
