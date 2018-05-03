@@ -13,8 +13,8 @@ const renderLoading = require('./loading')
 const renderError = require('./error')
 
 exports.render = function render () {
-  yo.update(document.querySelector('body'), yo`
-    <body>
+  yo.update(document.querySelector('#app-container'), yo`
+    <div id="app-container">
       ${renderHeader()}
 
       <main>
@@ -28,7 +28,7 @@ exports.render = function render () {
       <style>body{--theme-color-border: ${app.getAppColor('border')}}</style>
       <style>body{--theme-color-hover: ${app.getAppColor('hover')}}</style>
       <input id="profile-url" type="text" value=${app.currentUser ? app.currentUser.url : ''}>
-    </body>
+    </div>
   `)
 }
 

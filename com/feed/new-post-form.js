@@ -3,12 +3,15 @@
 const yo = require('yo-yo')
 const renderAvatar = require('../avatar')
 const renderMentions = require('./mention-picker')
-const {buildNewPost, addMention, checkForMentions} = require('../../lib/posts')
+const {buildNewPost, addMention, checkForMentions, measureTextareaHeight} = require('../../lib/posts')
 
 const ARROW_UP = 38
 const ARROW_DOWN = 40
 const ENTER_KEY = 13
 const TAB_KEY = 9
+
+const DEFAULT_EXPANDED_HEIGHT = 47
+var expandedHeight = DEFAULT_EXPANDED_HEIGHT // global state
 
 // exported api
 // =
@@ -23,7 +26,7 @@ module.exports = function renderNewPostForm (onSubmit = null) {
 
         <textarea
           placeholder="Write a post"
-          style="border-color: ${app.getAppColor('border')}; height: ${isEditingPost ? '60px' : '35px'};"
+          style="border-color: ${app.getAppColor('border')}; height: ${isEditingPost ? expandedHeight : 35}px;"
           onfocus=${onToggleNewPostForm}
           onblur=${onToggleNewPostForm}
           onkeyup=${onChangePostDraft}
@@ -48,8 +51,12 @@ module.exports = function renderNewPostForm (onSubmit = null) {
   function onChangePostDraft (e) {
     app.postDraftText = e.target.value
 
-    const checkResults = checkForMentions(app.postDraftText)
+    // size the textarea
+    expandedHeight = measureTextareaHeight(e.target)
+    e.target.style.height = `${expandedHeight}px`
 
+    // handle mentions
+    const checkResults = checkForMentions(app.postDraftText)
     app.possibleMentions = checkResults ? checkResults.mentions : false
     if (checkResults && checkResults.coordinates) {
       app.mentionCoordinates = `${checkResults.coordinates.x}px, ${checkResults.coordinates.y}px`
@@ -107,6 +114,7 @@ module.exports = function renderNewPostForm (onSubmit = null) {
     await app.libfritter.feed.post(app.currentUser, buildNewPost({ text: app.postDraftText }))
     app.postDraftText = ''
     app.posts = await app.loadFeedPosts()
+    expandedHeight = DEFAULT_EXPANDED_HEIGHT
     app.render()
   }
 
