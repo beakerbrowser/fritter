@@ -13,7 +13,7 @@ module.exports = renderMentions
 
 function renderMentions () {
   return yo`
-    <div class="mention-window" style="transform: translate(${app.mentionCoordinates})">
+    <div class="mention-picker" style="transform: translate(${app.mentionCoordinates})">
       ${app.possibleMentions.map((mention, i) => renderPossibleMention(mention, i))}
     </div>
   `
@@ -32,5 +32,5 @@ function renderPossibleMention (mention, index) {
 
 function setSelection (index) {
   app.selectedMention = index
-  yo.update(document.querySelector('.mention-window'), renderMentions())
+  yo.update(document.querySelector('.mention-picker'), renderMentions())
 }

@@ -2,7 +2,7 @@
 
 const yo = require('yo-yo')
 const renderAvatar = require('../avatar')
-const renderMentions = require('./mention-window')
+const renderMentions = require('./mention-picker')
 const {buildNewPost, addMention, checkForMentions} = require('../../lib/posts')
 
 const ARROW_UP = 38
@@ -49,8 +49,8 @@ module.exports = function renderNewPostForm (onSubmit = null) {
 
     const checkResults = checkForMentions(app.postDraftText)
 
-    app.possibleMentions = checkResults.mentions
-    if (checkResults.coordinates) {
+    app.possibleMentions = checkResults ? checkResults.mentions : false
+    if (checkResults && checkResults.coordinates) {
       app.mentionCoordinates = `${checkResults.coordinates.x}px, ${checkResults.coordinates.y}px`
     }
 
