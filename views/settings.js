@@ -7,6 +7,7 @@ const renderProfileEditor = require('../com/profile/profile-editor')
 const renderProfilePicker = require('../com/profile/profile-picker')
 const renderThemeColorPicker = require('../com/theme-color-picker')
 const renderImageSettings = require('../com/image-settings')
+const renderAdvancedSettings = require('../com/advanced-settings')
 
 // exported api
 // =
@@ -34,6 +35,10 @@ module.exports = function () {
 
         <div class="settings-view">
           ${renderImageSettings()}
+        </div>
+
+        <div class="settings-view">
+          ${renderAdvancedSettings()}
         </div>
       </div>
     </div>
