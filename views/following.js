@@ -23,10 +23,19 @@ module.exports = function renderFollowing () {
         <div class="view-content ${isEmpty ? 'empty' : ''}">
           ${isEmpty
             ? `${app.viewedProfile.name || 'Anonymous'} is not following anyone`
-            : yo`<div class="following-list">${app.viewedProfile.follows.slice().reverse().map(renderProfileListingItem)}</div>`
+            : yo`<div class="following-list">${app.viewedProfile.follows.slice().sort(sortFollows).map(renderProfileListingItem)}</div>`
           }
         </div>
       </div>
     </div>
   `
+}
+
+// internal methods
+// =
+
+function sortFollows (a, b) {
+  if (!a.name) return 1
+  if (!b.name) return -1
+  return a.name.localeCompare(b.name)
 }
