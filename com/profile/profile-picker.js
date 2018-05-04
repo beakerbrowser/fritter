@@ -71,6 +71,7 @@ module.exports = function renderProfilePicker () {
     e.preventDefault()
 
     window.localStorage.userUrl = e.target.profileUrl.value
+    await app.libfritter.db.delete() // clear index
     window.location.reload()
   }
 }
