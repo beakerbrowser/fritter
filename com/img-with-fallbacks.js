@@ -1,22 +1,20 @@
 const yo = require('yo-yo')
 
 // to try /avatar.png, /avatar.jpg, /avatar.gif, in that order:
-// imgWithFallbacks(`${f.url}/avatar`, ['png', 'jpg', 'gif'], {cls: 'avatar'})
-module.exports = function imgWithFallbacks (baseSrc, exts, {cls} = {}) {
-  var el = render(baseSrc, exts, cls)
-  return el
+// imgWithFallbacks([`${f.url}/avatar.png`, `${f.url}/avatar.jpg`, `${f.url}/avatar.gif`], {cls: 'avatar'})
+module.exports = function imgWithFallbacks (srcs, {cls} = {}) {
+  return render(srcs, cls)
 }
 
-function render (baseSrc, exts, cls) {
-  const nextExt = exts.shift()
-  const url = `${baseSrc}.${nextExt}?cache=${Date.now()}`
+function render (srcs, cls) {
+  const url = srcs.shift()
   return yo`
-    <img class=${cls} src=${url} onerror=${(e) => onerror(e, baseSrc, exts, cls)} />
+    <img class=${cls} src=${url} onerror=${(e) => onerror(e, srcs, cls)} />
   `
 }
 
-function onerror (e, baseSrc, exts, cls) {
-  if (exts.length > 0) {
-    yo.update(e.target, render(baseSrc, exts, cls))
+function onerror (e, srcs, cls) {
+  if (srcs.length > 0) {
+    yo.update(e.target, render(baseSrc, srcs, cls))
   }
 }
