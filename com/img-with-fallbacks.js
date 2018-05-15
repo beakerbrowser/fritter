@@ -15,6 +15,6 @@ function render (srcs, cls) {
 
 function onerror (e, srcs, cls) {
   if (srcs.length > 0) {
-    yo.update(e.target, render(baseSrc, srcs, cls))
+    yo.update(e.target, render(srcs, cls))
   }
 }
