@@ -14,7 +14,9 @@ module.exports = function renderFeed () {
   return yo`
     <div class="feed">
       ${!app.posts.length ? yo`<div class="empty">No posts yet! Maybe you should change that?</div>` : ''}
-      <div class="show-posts-btn new-posts"></div>
+      ${app.hasNewPost ?
+        yo`<div class="show-posts-btn new-posts" onclick=${() => app.reloadFeed()}>New posts</div>`
+        : ''}
       ${app.posts.map(renderFeedItem)}
       ${app.viewedProfile && app.posts.length >= app.viewedProfilePostsCount
         ? ''
