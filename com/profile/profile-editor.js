@@ -10,8 +10,9 @@ module.exports = function renderProfileEditor () {
   const isNew = !app.currentUserProfile
   var avatar = app.currentUserProfile && app.currentUserProfile.avatar ? app.currentUserProfile.avatar : ''
   var avatarUrl = avatar ? (app.currentUserProfile.getRecordOrigin() + '/' + avatar) : ''
-  var name = app.currentUserProfile && app.currentUserProfile.name ? app.currentUserProfile.name : ''
-  var bio = app.currentUserProfile && app.currentUserProfile.bio ? app.currentUserProfile.bio : ''
+  var profile = app.currentUserProfile || {}
+  var name = app.formEditValues.name || profile.name || ''
+  var bio = app.formEditValues.bio || profile.bio || ''
 
   return yo`
     <div>
@@ -28,10 +29,10 @@ module.exports = function renderProfileEditor () {
         </div>
 
         <label for="name">Name</label>
-        <input autofocus type="text" name="name" placeholder="Name" value=${name}/>
+        <input autofocus type="text" name="name" placeholder="Name" value=${name} onchange=${e => setFormValue('name', e.target.value)}/>
 
         <label for="bio">Bio (optional)</label>
-        <textarea name="bio" placeholder="Enter a short bio">${bio}</textarea>
+        <textarea name="bio" placeholder="Enter a short bio" onchange=${e => setFormValue('bio', e.target.value)}>${bio}</textarea>
 
         <div class="actions">
           <button type="submit" class="btn primary">${isNew ? 'Create profile' : 'Save'}</button>
@@ -39,6 +40,11 @@ module.exports = function renderProfileEditor () {
       </form>
     </div>
   `
+
+  function setFormValue (k, v) {
+    app.formEditValues[k] = v
+    console.log(app.formEditValues)
+  }
 
   async function onSaveProfile (e) {
     e.preventDefault()
