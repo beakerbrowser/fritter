@@ -1,0 +1,56 @@
+#indexing-statuses {
+  .spinner {
+    position: relative;
+    top: 3px;
+  }
+  .error {
+    fill: red;
+  }
+
+  .indexing-statuses-summary {
+    display: flex;
+    color: rgba(0,0,0,.5);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    & > div {
+      padding-right: 10px;
+
+      span {
+        font-size: 16px;
+        color: initial;
+      }
+
+      .caret {
+        display: inline-block;
+        font-size: 26px;
+        line-height: 18px;
+        transform: translate(4px,4px) rotate(90deg);
+      }
+    }
+  }
+
+  .indexing-statuses-list {
+    margin-top: 6px;
+  }
+
+  .indexing-statuses-list-item {
+    display: flex;
+    height: 21px;
+
+    .status {
+      width: 23px;
+
+      .spinner {
+        top: 1px;
+      }
+    }
+
+    .link {
+      margin-right: 6px;
+    }
+  }
+}
