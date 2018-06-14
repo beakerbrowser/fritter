@@ -17,6 +17,9 @@ module.exports = function () {
     <div class="view feed">
       <div class="sidebar-col">
         ${renderProfileCard()}
+        <div class="module">
+          <strong>Fritter build 2018.06.14</strong>
+        </div>
         ${renderFooter()}
       </div>
 
