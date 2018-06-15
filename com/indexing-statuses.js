@@ -33,14 +33,20 @@ exports.render = function () {
                 ? renderErrorIcon()
                 : ''}
           </div>
-          <div><a class="link" href=${url} target="_blank">${url.slice(0, 12)}..${url.slice(-1)}</a></div>
+          <div><a class="dat-url link" href="/user/${url}" onclick=${onGoto}>${url.slice(6, 12)}..${url.slice(-2)}</a></div>
           ${status.error
-            ? yo`<div>${status.error === 'missing' ? 'Timed out.' : status.error.toString()}</div>`
+            ? yo`<div class="error-desc">${status.error === 'missing' ? 'Timed out.' : status.error.toString()}</div>`
             : ''}
+          <div class="unfollow link" onclick=${() => app.unfollowByURL(url)}>unfollow</div>
         </div>`
       )
     }
     return yo`<div class="indexing-statuses-list">${els}</div>`
+  }
+
+  function onGoto (e) {
+    e.preventDefault()
+    window.history.pushState({}, null, e.currentTarget.getAttribute('href'))
   }
 
   return yo`
