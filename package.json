@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/beakerbrowser/fritter#readme",
   "dependencies": {
-    "@beaker/libfritter": "^2.2.4",
+    "@beaker/libfritter": "^2.2.5",
     "nanorouter": "^2.2.0",
     "textarea-caret": "^3.1.0",
     "yo-yo": "^1.4.1"
