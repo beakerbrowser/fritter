@@ -17,7 +17,7 @@ exports.render = function () {
     else numIndexed++
   }
   if (!numMissing && !numErrored && !numIndexing) {
-    return ''
+    return yo`<div id="indexing-statuses" class="module hidden"></div>`
   }
 
   function renderList () {
@@ -74,11 +74,7 @@ exports.render = function () {
 
 exports.rerender = function () {
   var el = document.getElementById('indexing-statuses')
-  if (el) {
-    var newEl = exports.render()
-    if (newEl) yo.update(el, newEl)
-    else el.parentNode.removeChild(el)
-  }
+  if (el) yo.update(el, exports.render())
 }
 
 function caret () {

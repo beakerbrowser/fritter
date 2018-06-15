@@ -19,7 +19,7 @@ module.exports = function renderAdvancedSettings () {
   async function onRebuildDatabase (e) {
     e.preventDefault()
     await app.libfritter.db.delete() // clear index
-    window.location.reload()
+    window.location.pathname = '/'
   }
 }
 
