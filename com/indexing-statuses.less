@@ -40,24 +40,26 @@
   .indexing-statuses-list-item {
     display: flex;
     height: 21px;
+    align-items: center;
+
+    & > * {
+      margin-right: 6px;    
+    }
 
     .status {
-      width: 23px;
+      width: 18px;
 
       .spinner {
         top: 1px;
       }
     }
 
-    .dat-url,
-    .error-desc {
-      margin-right: 6px;
+    .dat-url {
+      width: 80px;
     }
 
     .unfollow {
-      font-size: 11px;
-      line-height: 20px;
-      color: gray;
+      color: rgba(0,0,0,.5);
     }
   }
 }

@@ -33,7 +33,10 @@ exports.render = function () {
                 ? renderErrorIcon()
                 : ''}
           </div>
-          <div><a class="dat-url link" href="/user/${url}" onclick=${onGoto}>${url.slice(6, 12)}..${url.slice(-2)}</a></div>
+          <div class="dat-url"><a class="link" href="/user/${url}" onclick=${onGoto}>${url.slice(6, 12)}..${url.slice(-2)}</a></div>
+          ${status.isIndexing
+            ? yo`<progress value=${status.progress} max="100"></progress>`
+            : ''}
           ${status.error
             ? yo`<div class="error-desc">${status.error === 'missing' ? 'Timed out.' : status.error.toString()}</div>`
             : ''}
