@@ -1,6 +1,6 @@
 {
   "name": "fritter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An example app for Beaker (simple twitter clone)",
   "main": "index.js",
   "scripts": {
