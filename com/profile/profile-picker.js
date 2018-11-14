@@ -7,6 +7,7 @@ const yo = require('yo-yo')
 
 module.exports = function renderProfilePicker () {
   const isNew = !app.currentUserProfile
+  var hasValue = !!app.profilePickerInputUrl
 
   return yo`
     <div>
@@ -16,10 +17,10 @@ module.exports = function renderProfilePicker () {
         <button type="button" onclick=${onSelectProfile} class="btn">Select profile from Library</button>
 
         <p>
-          <input oninput=${validateProfileUrl} name="profileUrl" type="text" placeholder="Paste profile URL"/>
+          <input oninput=${validateProfileUrl} name="profileUrl" type="text" placeholder="Paste profile URL" value=${app.profilePickerInputUrl||''}/>
         </p>
 
-        <button id="import-profile-btn" type="submit" class="btn primary" disabled>
+        <button id="import-profile-btn" type="submit" class="btn primary" ${hasValue ? '' : 'disabled'}>
           ${isNew ? 'Go to feed' : 'Use this profile'}
         </button>
       </form>
@@ -36,7 +37,7 @@ module.exports = function renderProfilePicker () {
       filters: {isOwner: true}
     })
 
-    profileUrlInput.value = profileArchive.url
+    app.profilePickerInputUrl = profileUrlInput.value = profileArchive.url
     profileImportSubmitBtn.disabled = false
   }
 
